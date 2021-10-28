@@ -1,0 +1,61 @@
+@import '../../sass/abstracts/mixins';
+
+.navbar {
+    width:100%;
+    height: auto;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed; // verify
+    // padding: 0 2rem;
+    overflow: hidden;
+
+
+
+    &_logo_container {
+        width:10%;
+        height: 5rem;
+        @include responsive(phone) {
+            width:auto;
+          }
+
+
+    }
+
+
+    & .navbar_search_bar_container {
+
+        width: 70%;
+        height: 3.2rem;
+
+        @include responsive(tab-land) {
+            display: block;
+            position: absolute;
+            top: 5rem;
+            width:100vw;
+          }
+
+        & .search_input {
+            width: 100%;
+            height: 100%;;
+
+        }
+    }
+
+    &_links_container {
+        height: auto;
+        width: 40%;
+        @include responsive(tab-land) {
+            width:auto;
+          }
+
+
+       & ul {
+            height: 4rem;
+            width:100%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+}

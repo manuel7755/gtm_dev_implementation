@@ -1,0 +1,29 @@
+@import '../../sass/abstracts/mixins';
+
+.navLink {
+    height: 100%;
+    width: auto;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    
+
+    @include responsive(tab-land) {
+        position: relative;
+        justify-content: center;
+        margin-top: 5px;
+
+      }
+
+
+
+    &_link {
+        color: white;
+        font-size: 2rem;
+        text-decoration: none;
+  
+
+
+    }
+
+}

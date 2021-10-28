@@ -1,0 +1,81 @@
+@import "sass/abstracts/mixins";
+*,   
+::before, 
+::after {
+
+  margin:0 auto;
+  padding:0;
+  box-sizing:inherit;
+
+
+}
+
+
+html {
+  scroll-behavior:smooth;
+  font-size: 62.5%;
+
+
+
+}
+
+
+@include responsive(phone) {
+  font-size: 50%;
+}
+ /* width < 1200? */
+ /* 1 rem = 9px, 9/16 = 50% */
+@include responsive(tab-land) {
+  font-size: 56.25%; 
+}
+
+/* width < 900? 1 rem = 8px, 8/16 = 50% */
+@include responsive(tab-port) { 
+  font-size: 50%; 
+}
+
+/* 1rem = 12, 12/16 */
+@include responsive(big-desktop) {
+  font-size: 75%; 
+}
+
+
+
+body {
+  box-sizing: border-box;
+  width: 100%;
+  height:100%;
+
+     @include responsive(tab-port) {
+      padding: 0;
+  }
+
+
+
+}
+
+
+img {
+  height : 100%;
+  width: 100%;
+  object-fit: fill;
+  overflow: hidden;
+  
+ }
+ 
+
+ svg {
+  height:100%;
+  width: 4.5rem;
+  fill :black;
+  margin: 0 1rem;
+}
+
+
+.page_section {
+
+  width: 100%;
+  height: 100%;
+
+
+}

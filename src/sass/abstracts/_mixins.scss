@@ -1,0 +1,64 @@
+//Media Query Manager
+
+/* 0-600px Phone
+    600px-900px Table Portrait
+    900px-1200px Table landscape
+    1200-1800 is where our normal styles apply
+    1800 + Big Desktop
+*/
+
+// 1em = 16px (browser default)
+
+
+//ORDER : Base + typography > general layout + grid > page layout > components
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) { @content };    //600px
+    }
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 56.25em) { @content };     //900px
+    }
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 75em) { @content };    //1200px
+    }
+    @if $breakpoint == big-desktop {
+        @media only screen and (min-width: 112.5em) { @content };    //1800
+    }
+}
+
+@mixin breakpoint($point) {
+    @if $point == xxs {
+        @media (max-width: 480px) {
+            @content;
+        }
+    }
+    @else if $point == xs {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+    @else if $point == sm {
+        @media (min-width: 768px) and (max-width : 991px) {
+            @content;
+        }
+    }
+    @else if $point == md {
+        @media (min-width: 768px) and (max-width : 1199px) {
+            @content;
+        }
+    }
+    @else if $point == md-d {
+        @media (min-width: 1200px) and (max-width : 1299px) {
+            @content;
+        }
+    } //md-d is of Medium Desktop
+    @else if $point == lg {
+        @media (max-width: 1440px) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Breakpoint mixin supports: xs, sm, md,md-d, lg";
+    }
+}
