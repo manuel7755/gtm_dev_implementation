@@ -21,9 +21,6 @@ import './App.scss';
 
 function App() {
 
-
-
-
   return (
     <div className="App">
       <NavBar/>
@@ -31,7 +28,6 @@ function App() {
           <Route  path="/cart" component={Cartpage} />
           <Route  path="/search_results" component={Searchpage} />
           <Route  path="/catalogue" component={Listingpage} />
-
           <Route exact path="/" component={Homepage} />
         </Switch>
     </div>

@@ -17,3 +17,12 @@ export const useCheckMobileScreen = () => {
 
     return (width >= 1200);
 }
+
+
+export const apiCallProducts = (call) => {
+
+    fetch('https://fakestoreapi.com/products')
+    .then(res=>res.json())
+    .then(products => call(products) )
+
+}

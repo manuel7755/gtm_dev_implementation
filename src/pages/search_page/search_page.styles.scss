@@ -1,0 +1,13 @@
+.listing_page_container {
+
+   
+
+    & .listing_products_container {
+        padding-top: 5rem;
+         display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        justify-items: center;
+    }
+
+}

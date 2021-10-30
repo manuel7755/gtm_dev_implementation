@@ -1,27 +1,72 @@
 import React, { Component } from 'react';
-
+import { apiCallProducts } from '../../utility/Utility.component';
+import Product from '../../components/Product/Product.component';
 
 class SearchPage extends Component {
 
-    constructor(){
+    constructor() {
         super()
 
         this.state = {
 
-            pageType : "SearchPage"
+            pageType: "SearchPage",
+            products: []
+
+        }
+    }
+    componentDidMount() {
+
+        const searchTerm = window.location.search.split('=')[1].toLowerCase();
+
+        console.log(searchTerm)
+
+        apiCallProducts((products) => {
+
+
+            this.search(searchTerm, products)
+
+        });
+    }
+
+    search(searchTerm, products) {
+
+        console.log(products)
+        if (products.length) {
+
+            const sortedProducts = products.filter(product => {
+
+                const productTitle = product.title.toLowerCase();
+
+                if (productTitle.indexOf(searchTerm) > -1) {
+
+                    return product
+                }
+            })
+
+            console.log(sortedProducts)
+
+
+            this.setState({ products: sortedProducts })
 
         }
     }
 
 
-    render(){
+    render() {
 
-        const {pageType} = this.state;
+        const { pageType, products } = this.state;
 
 
         return (
 
-            <h1>{pageType}</h1>
+            <div className="page_section listing_page_container">
+
+                <div className="listing_products_container">
+                    {products.map(product => <Product {...product} />)}
+                </div>
+
+
+            </div>
 
         )
     }

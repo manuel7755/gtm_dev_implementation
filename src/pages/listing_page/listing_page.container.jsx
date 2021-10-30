@@ -1,6 +1,10 @@
 import React, { Component, useEffect } from 'react';
 import Product from '../../components/Product/Product.component';
 
+
+
+import { apiCallProducts } from '../../utility/Utility.component';
+
 import './listing_page.styles.scss';
 
 class ListingPage extends Component {
@@ -23,10 +27,16 @@ componentDidMount() {
 
 // products API
 if (this.state.products && !this.state.products.length) {
-fetch('https://fakestoreapi.com/products')
-.then(res=>res.json())
-.then(products => this.setState({products : products }))
+
+        apiCallProducts((products) => {
+    
+            this.setState({products : products})
+
+        });
+
+         
         
+
     }
 }
 

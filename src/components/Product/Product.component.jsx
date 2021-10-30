@@ -1,6 +1,6 @@
 import React from 'react';
-
 import './Product.styles.scss';
+import Button from '../../components/Button/Button.component';
 
 
 
@@ -30,7 +30,7 @@ import './Product.styles.scss';
 
             </div>
 
-            <button> Add To Cart</button>
+            <Button> Add To Cart</Button>
         </div>)
 
     }
