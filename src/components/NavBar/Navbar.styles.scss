@@ -2,14 +2,15 @@
 
 .navbar {
     width:100%;
-    height: auto;
+    height: 5rem;
     background-color: grey;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     position: fixed; // verify
-    // padding: 0 2rem;
     overflow: hidden;
+    z-index: 12;
+    padding: 0 2rem;
 
 
 
@@ -18,28 +19,27 @@
         height: 5rem;
         @include responsive(phone) {
             width:auto;
+            height: auto;
           }
-
-
     }
 
 
     & .navbar_search_bar_container {
-
         width: 70%;
         height: 3.2rem;
 
         @include responsive(tab-land) {
             display: block;
-            position: absolute;
+            position: fixed;
             top: 5rem;
             width:100vw;
+            z-index: 10;
+
           }
 
         & .search_input {
             width: 100%;
             height: 100%;;
-
         }
     }
 
@@ -58,4 +58,35 @@
             justify-content: space-evenly;
         }
     }
+
+    
+    .cart_quantity {
+
+        height: 15px;
+        min-width: 15px;
+        background-color: blanchedalmond;
+        position: absolute;
+        z-index: 1;
+        bottom: 30px;
+        right: 10px;
+        border-radius: 25px;
+        display: flex;
+        font-size: 10px;
+        padding: 1.5px;
+    
+        align-items: center;
+        justify-content: center;
+
+        & > * {
+            position: relative;
+            font-size: 10px;
+            color:black;
+
+        }
+        @include responsive(tab-land) {
+            bottom: 38px;
+             right: -5px;
+          }
+    }
+
 }

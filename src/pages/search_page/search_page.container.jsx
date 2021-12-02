@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { apiCallProducts } from '../../utility/Utility.component';
 import Product from '../../components/Product/Product.component';
 
@@ -14,42 +14,18 @@ class SearchPage extends Component {
 
         }
     }
-    componentDidMount() {
+  
+    static getDerivedStateFromProps(props, state) {
 
-        const searchTerm = window.location.search.split('=')[1].toLowerCase();
+        const sortedProducts = props.location.state.products;
+    
+            return { products: sortedProducts }
+   
+    
+        return null;
+      }
+    
 
-        console.log(searchTerm)
-
-        apiCallProducts((products) => {
-
-
-            this.search(searchTerm, products)
-
-        });
-    }
-
-    search(searchTerm, products) {
-
-        console.log(products)
-        if (products.length) {
-
-            const sortedProducts = products.filter(product => {
-
-                const productTitle = product.title.toLowerCase();
-
-                if (productTitle.indexOf(searchTerm) > -1) {
-
-                    return product
-                }
-            })
-
-            console.log(sortedProducts)
-
-
-            this.setState({ products: sortedProducts })
-
-        }
-    }
 
 
     render() {
@@ -64,8 +40,6 @@ class SearchPage extends Component {
                 <div className="listing_products_container">
                     {products.map(product => <Product {...product} />)}
                 </div>
-
-
             </div>
 
         )

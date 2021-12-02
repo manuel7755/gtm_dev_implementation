@@ -1,0 +1,38 @@
+@import '../../sass/abstracts/mixins';
+
+.addToCartSlider_container {
+    width: 45vw;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    background-color: green;
+    position: fixed;
+    margin-left: 100%;
+    top: 5rem;
+    z-index: -1;
+    transition: all 2s ease;
+    
+    &--on {
+        display: block;
+    }
+
+    &--off {
+        
+        display: none;
+    }
+
+
+
+
+    @include responsive(phone) {
+        width: 100%;
+        margin: 0;
+
+      }
+
+.addToCartSlider_content {
+    width: 100%;
+
+
+    }
+}

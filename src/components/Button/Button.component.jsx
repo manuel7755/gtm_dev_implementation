@@ -15,12 +15,11 @@ import {
 const Button = (props) => (
 
     <Link to={props.link} className="button_container">
-        <button className="cta_button">
+        <button onClick={props.clickAction} className="cta_button">
             {props.children}
         </button>
     </Link>
 )
-
 
 
 

@@ -2,18 +2,28 @@ import React from 'react';
 import './Product.styles.scss';
 import Button from '../../components/Button/Button.component';
 
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    withRouter, 
+    Link
+  } from 'react-router-dom';
 
 
 
 //const Product = ({ category, description, id, image, price, title}) => {
 
-    const Product = ({image , title, description, price}) =>  {
+const Product = ({ id, image, title, description, price }) => {
 
 
-       return ( <div className="product_container">
+    return (
+
+        <div className="product_container">
             <div className="product_content product_image">
+                <Link to={`/product?pCode=${id}`}>
                 <img src={image} alt="product image" />
+                </Link>
 
             </div>
             <div className="product_content product_description">
@@ -26,14 +36,14 @@ import Button from '../../components/Button/Button.component';
 
             <div className="product_content product_price">
 
-               ${price}
+                ${price}
 
             </div>
 
             <Button> Add To Cart</Button>
         </div>)
 
-    }
+}
 
 export default Product;
 

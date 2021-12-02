@@ -1,9 +1,8 @@
 @import "sass/abstracts/mixins";
-*,   
-::before, 
-::after {
+*, 
+*::after,
+*::before {
 
-  margin:0 auto;
   padding:0;
   box-sizing:inherit;
 
@@ -14,8 +13,6 @@
 html {
   scroll-behavior:smooth;
   font-size: 62.5%;
-
-
 
 }
 
@@ -43,39 +40,42 @@ html {
 
 body {
   box-sizing: border-box;
-  width: 100%;
-  height:100%;
 
+  
      @include responsive(tab-port) {
       padding: 0;
   }
 
-
+  & .page_section {
+    padding-top: 5rem;
+    width: 100%;
+    height: 100vh;
+  
+  }
 
 }
 
 
 img {
   height : 100%;
-  width: 100%;
-  object-fit: fill;
-  overflow: hidden;
-  
+  width: 100%;  
  }
- 
+    
 
  svg {
   height:100%;
-  width: 4.5rem;
+  width: 4rem;
   fill :black;
-  margin: 0 1rem;
+
+    
+}
+
+p {
+  font-size : 1.8rem;
+  
+  &:not(:last-child){
+      margin-bottom: 2rem;
+  }
 }
 
 
-.page_section {
-
-  width: 100%;
-  height: 100%;
-
-
-}

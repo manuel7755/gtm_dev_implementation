@@ -1,61 +1,56 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import Product from '../../components/Product/Product.component';
-
-
-
 import { apiCallProducts } from '../../utility/Utility.component';
+
+import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
 
 import './listing_page.styles.scss';
 
-class ListingPage extends Component {
+const ListingPage = () => {
 
+    const [products, setProducts] = useState([]);
 
-    constructor() {
-        super();
+    useEffect(() => {
 
-        this.state = {
-            page : 'listing page',
-            products : []
+        if (products && !products.length) {
 
+            apiCallProducts((products) => {
+
+                setProducts(products)
+
+                sessionStorage.setItem('listingProducts', products)
+
+            });
         }
+    }, []);
 
-
-    }
-
-
-componentDidMount() {
-
-// products API
-if (this.state.products && !this.state.products.length) {
-
-        apiCallProducts((products) => {
-    
-            this.setState({products : products})
-
-        });
-
-         
+    function nativeAddToCart() {        
+  
+   
         
+   
+   
+        //    setTimeout(() => {
+   
+        //        setSuccessAddToCart(false)
+   
+        //    },3500)
+       }
+   
 
-    }
-}
 
-    render() {
+    return (
 
-        const { page, products } = this.state;
+        <div className="page_section listing_page_container">
 
-        return (
-
-            <div className="page_section listing_page_container">
-        
-              <div className="listing_products_container">
-              {products.map(product =>  <Product {...product}/>)}
-              </div>
-           
-                
+            <div className="listing_products_container">
+                {products.map(product => <div key={product.id}> <Product {...product} /> </div>)}
             </div>
-        )
-    }
+
+
+        </div>
+    )
+
 }
 
 
