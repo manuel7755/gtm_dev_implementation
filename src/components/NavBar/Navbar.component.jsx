@@ -17,7 +17,7 @@ import { BrowserView, MobileView } from 'react-device-detect'; // uninstall
 import { apiCallProducts } from '../../utility/Utility.component';
 import { useCheckMobileScreen } from '../../utility/Utility.component';
 
-import CartSlider from "../CartSlider/CartSlider";
+import CartSlider from "../CartSlider/CartSlider.component";
 
 
 
@@ -64,6 +64,13 @@ const Navbar = (props) => {
                 })
             });
         }
+    }
+
+
+    const activateCartSlider = () => {
+
+
+
     }
 
     return (
@@ -118,9 +125,8 @@ const Navbar = (props) => {
                 </div>
         
 
-            {cartSlider ? 
-                <CartSlider />
-           : null }
+                <CartSlider activeStatus={cartSlider}/>
+           
         </div>
 
     )

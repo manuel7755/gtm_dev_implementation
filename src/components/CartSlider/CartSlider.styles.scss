@@ -1,27 +1,27 @@
 @import '../../sass/abstracts/mixins';
 
 .addToCartSlider_container {
-    width: 45vw;
-    height: 100vh;
+    width: 30%;
+    height: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-evenly;
     background-color: green;
     position: fixed;
-    margin-left: 100%;
+    margin-left: 70%;
     top: 5rem;
     z-index: -1;
-    transition: all 2s ease;
+    transition: display 2s ease;
+    padding: 3.5rem 1rem;
+    overflow : scroll;
     
-    &--on {
+    &--true {
         display: block;
     }
 
-    &--off {
-        
+    &--false {
         display: none;
     }
-
-
 
 
     @include responsive(phone) {

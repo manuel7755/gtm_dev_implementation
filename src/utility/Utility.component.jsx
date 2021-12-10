@@ -56,14 +56,11 @@ export const addToCart = (product) => {
         setTimeout(() => {
 
             try {
-
-
                 console.log('add to cart hit ', product)
                 // get current cart products if there are any
                 let cart = typeof sessionStorage.cart != 'undefined' ? JSON.parse(sessionStorage.cart) : [];
 
-
-
+                console.log("add to cart ", cart)
                 const isProductInCart = cart.find(cartProduct => {
 
                     if (cartProduct.id === product.id) {
@@ -134,5 +131,33 @@ export const getCartInfo = () => {
         
             return {cartProducts , cartInfo: {totalItems : 0 }};
     }
+}
+
+export const updateCart = (cart) => {
+
+    sessionStorage.setItem("cart", JSON.stringify(cart))
+
+
+}
+
+
+export const removeProduct = (id,cart,call) => {
+
+
+    console.log("remove cart ", cart, id)
+
+    // fix format 
+
+    let cartProducts = cart.cartProducts
+
+    console.log("cart product ", cartProducts)
+    const filteredCart = cartProducts.filter(product => product.id !== id);
+
+    cartProducts = [{cartProducts: filteredCart}]
+
+    console.log("cart products filtered " , cartProducts)
+    updateCart(cartProducts[0].cartProducts)
+  
+    call(cartProducts)
 
 }

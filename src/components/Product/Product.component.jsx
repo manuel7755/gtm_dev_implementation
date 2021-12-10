@@ -14,7 +14,7 @@ import {
 
 //const Product = ({ category, description, id, image, price, title}) => {
 
-const Product = ({ id, image, title, description, price }) => {
+const Product = ({ id, image, title, description, price, addToCart }) => {
 
 
     return (
@@ -26,11 +26,9 @@ const Product = ({ id, image, title, description, price }) => {
                 </Link>
 
             </div>
-            <div className="product_content product_description">
+            <div className="product_content">
                 <h1 className="product_title">{title}</h1>
-                <p className="product_description">
-                    {description}
-                </p>
+           
 
             </div>
 
@@ -40,8 +38,9 @@ const Product = ({ id, image, title, description, price }) => {
 
             </div>
 
-            <Button> Add To Cart</Button>
-        </div>)
+            <Button link={false} clickAction={() => addToCart(id)}> Add To Cart</Button>
+        </div>
+        )
 
 }
 
