@@ -6,7 +6,7 @@ import { ListingProductsContext } from '../../Contexts/ListingProducts';
 
 import CartSliderProduct from "../CartSliderProduct/CartSliderProduct.component";
 import Button from "../Button/Button.component";
-import { apiGetProduct, getQueryParam, addToCart, getCartInfo, removeProduct } from '../../utility/Utility.component';
+import { apiGetProduct, getQueryParam, addToCart, getCartInfo, removeProduct, updateProductQuantity} from '../../utility/Utility.component';
 
 const CartSlider = ({ activeStatus }) => {
 
@@ -35,17 +35,46 @@ const CartSlider = ({ activeStatus }) => {
         })
     }
 
+
+    const updateQuantityNative = (productId, action) => {
+
+        console.log("increase quantity " , productId)
+
+        updateProductQuantity(productId,cart,action, (updatedCart) => {
+
+            console.log("increase quantity",updatedCart)
+
+            setCart(...updatedCart)
+
+        })
+    }
+
+    // const decreaseQuantityNative = (productId) => {
+
+    //     console.log("decrease quantity " , productId)
+
+    //     decreaseProductQuantity(productId,cart, (updatedCart) => {
+
+    //         console.log("decrease quantity",updatedCart)
+
+    //         setCart(...updatedCart)
+
+    //     })
+    // }
+
     return (
         <div className={`addToCartSlider_container addToCartSlider_container--${activeStatus}`} >
             <div className="addToCartSlider_content">
                 {cart.cartProducts && cart.cartProducts.length > 0 ? cart.cartProducts.map(product => {
-                        return <CartSliderProduct removeProduct={removeProductNative} {...product}/>
+                        return (<CartSliderProduct 
+                        updateQuantity={updateQuantityNative}
+                        removeProduct={removeProductNative} 
+                        {...product}/>)
                 }) : null}
                 <Button link="/cart">Checkout</Button>
             </div>
         </div>
     )
 }
-
-
+    
 export default CartSlider;
