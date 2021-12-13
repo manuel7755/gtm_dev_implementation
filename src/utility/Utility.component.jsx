@@ -83,11 +83,7 @@ export const addToCart = (product) => {
 
                 }
 
-                const cartQuantity = cart.reduce((acc, product) => {
-
-                    return acc + +product.quantity
-
-                }, 0)
+                let cartQuantity = calculateCart(cart, "total quantity");
 
                 sessionStorage.setItem('cart', JSON.stringify(cart))
 
@@ -138,6 +134,30 @@ export const updateCart = (cart) => {
 
 }
 
+export const calculateCart = (cart, info) => {
+
+    if (info === "total quantity") {
+
+
+        if (cart.length > 0) {
+
+            const cartQuantity = cart.reduce((acc, product) => {
+
+                return acc + +product.quantity
+
+            }, 0)
+
+
+            return cartQuantity
+
+
+        } else if (info === "total price") {
+
+
+        }
+    }
+}
+
 
 export const removeProduct = (id, cart, call) => {
 
@@ -150,8 +170,8 @@ export const removeProduct = (id, cart, call) => {
 
     console.log("cart product ", cartProducts)
     let filteredCart = cartProducts.filter(product => product.id !== id);
-
-    cartProducts = [{ cartProducts: filteredCart }]
+    let cartQuantity = calculateCart(filteredCart, "total quantity");
+    cartProducts = [{ cartProducts: filteredCart, cartInfo: { totalItems: cartQuantity } }]
 
     console.log("cart products filtered ", cartProducts)
     updateCart(cartProducts[0].cartProducts)
@@ -165,72 +185,45 @@ export const updateProductQuantity = (id, cart, action, call) => {
     let cartProducts = cart.cartProducts
 
 
-    let filteredCart = cartProducts.map(product => {
+    let filteredCart = cartProducts.reduce((result, product) => {
 
         console.log(product)
 
         if (product.id === id && product.quantity && action === "increase") {
 
-            return (
-                {
-                 
-                    ...product,
-                    quantity: +product.quantity +  1,
-                }
 
-            )
+            result.push({
 
-        } else if (product.id === id && product.quantity && action === "decrease") {
+                ...product,
+                quantity: +product.quantity + 1,
+            })
 
-            
-            return (
-                {
-                 
-                    ...product,
-                    quantity: +product.quantity -  1,
-                }
 
-            )
 
-        } else return product
-    })
+        } else if (product.id === id && product.quantity === 1 && action === "decrease") {
 
-    console.log("increased quantity", filteredCart)
-    cartProducts = [{ cartProducts: filteredCart }]
 
-    updateCart(cartProducts[0].cartProducts)
+        } else if (product.id === id && product.quantity >= 1 && action === "decrease") {
 
-    call(cartProducts)
-    
-}
 
-export const decreaseProductQuantity = (id, cart, call) => {
+            result.push({
 
-    let cartProducts = cart.cartProducts
+                ...product,
+                quantity: +product.quantity - 1,
+            })
 
-    let filteredCart = cartProducts.map(product => {
 
-        console.log(product)
+        } else result.push(product)
 
-        if (product.id === id && product.quantity) {
+        return result
+    }, [])
 
-            return (
-                {
-                 
-                    ...product,
-                    quantity: +product.quantity - 1,
-                }
-
-            )
-
-        } else return
-    })
-
-    console.log("increased quantity", filteredCart)
-    cartProducts = [{ cartProducts: filteredCart }]
+    console.log("filtered cart", filteredCart)
+    let cartQuantity = calculateCart(filteredCart, "total quantity");
+    cartProducts = [{ cartProducts: filteredCart, cartInfo: { totalItems: cartQuantity } }]
 
     updateCart(cartProducts[0].cartProducts)
 
     call(cartProducts)
-    
+
 }

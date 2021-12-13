@@ -49,19 +49,6 @@ const CartSlider = ({ activeStatus }) => {
         })
     }
 
-    // const decreaseQuantityNative = (productId) => {
-
-    //     console.log("decrease quantity " , productId)
-
-    //     decreaseProductQuantity(productId,cart, (updatedCart) => {
-
-    //         console.log("decrease quantity",updatedCart)
-
-    //         setCart(...updatedCart)
-
-    //     })
-    // }
-
     return (
         <div className={`addToCartSlider_container addToCartSlider_container--${activeStatus}`} >
             <div className="addToCartSlider_content">
@@ -70,7 +57,7 @@ const CartSlider = ({ activeStatus }) => {
                         updateQuantity={updateQuantityNative}
                         removeProduct={removeProductNative} 
                         {...product}/>)
-                }) : null}
+                }) : <h1>There are no items on cart</h1>}
                 <Button link="/cart">Checkout</Button>
             </div>
         </div>
