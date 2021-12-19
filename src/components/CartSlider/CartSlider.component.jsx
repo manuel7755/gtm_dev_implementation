@@ -15,11 +15,11 @@ const CartSlider = ({ activeStatus }) => {
 
     useEffect(() => {
 
-        const cartInfo = getCartInfo()
+        // const cartInfo = getCartInfo()
 
-        setCart(cartInfo)
+        // setCart({...cartInfo})
 
-        console.log("cart " , cart)
+
 
     },[activeStatus])
 
@@ -27,8 +27,9 @@ const CartSlider = ({ activeStatus }) => {
 
     removeProduct(productId,cart, (updatedCart) => {
 
+        console.log("product removed " , updatedCart)
 
-        setCart(...updatedCart)
+        setCart({...updatedCart})
 
         console.log("product removed " , updatedCart)
 
@@ -40,11 +41,13 @@ const CartSlider = ({ activeStatus }) => {
 
         console.log("increase quantity " , productId)
 
+        console.log("cart", cart)
+
         updateProductQuantity(productId,cart,action, (updatedCart) => {
 
             console.log("increase quantity",updatedCart)
 
-            setCart(...updatedCart)
+            setCart({...updatedCart})
 
         })
     }
@@ -58,6 +61,14 @@ const CartSlider = ({ activeStatus }) => {
                         removeProduct={removeProductNative} 
                         {...product}/>)
                 }) : <h1>There are no items on cart</h1>}
+
+                <div className="cart_total_amount">
+
+                    {cart.cartInfo && cart.cartInfo.totalPrice ? cart.cartInfo.totalPrice : 0}
+
+
+
+                </div>
                 <Button link="/cart">Checkout</Button>
             </div>
         </div>

@@ -49,22 +49,19 @@ const ProductPage = () => {
      console.log('product at addToCart ' , updatedProduct)
      
 
-        addToCart(updatedProduct).then((response) => { 
+        addToCart(cart, updatedProduct).then((updatedCart) => { 
             
-            console.log('product has been added to cart', response);
+            console.log('product has been added to cart', updatedCart);
 
             setSuccessAddToCart(true)
 
-            let cart = getCartInfo();
 
-            setCart({...cart})
+            setCart({...updatedCart})
 
-            console.log('cartInfo ' , cart.cartInfo)
+            console.log('cartInfo ' , updatedCart.cartInfo)
 
         
         })
-
-
         setTimeout(() => {
 
             setSuccessAddToCart(false)

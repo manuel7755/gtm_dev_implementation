@@ -2,6 +2,11 @@
 import React, { useState, useEffect } from 'react';
 
 
+//global variables
+
+let cart = typeof sessionStorage.cart != 'undefined' ? JSON.parse(sessionStorage.getItem("cart")) : {cartProducts: [] , cartInfo: { totalItems: 0 , totalPrice: 0}};
+
+
 export const useCheckMobileScreen = () => {
     const [width, setWidth] = useState(window.innerWidth);
     const handleWindowSizeChange = () => {
@@ -48,7 +53,7 @@ export const getQueryParam = (paramName) => {
 }
 
 
-export const addToCart = (product) => {
+export const addToCart = (cart,product) => {
 
 
     return new Promise((resolve, reject) => {
@@ -58,72 +63,77 @@ export const addToCart = (product) => {
             try {
                 console.log('add to cart hit ', product)
                 // get current cart products if there are any
-                let cart = typeof sessionStorage.cart != 'undefined' ? JSON.parse(sessionStorage.cart) : [];
+
 
                 console.log("add to cart ", cart)
-                const isProductInCart = cart.find(cartProduct => {
 
-                    if (cartProduct.id === product.id) {
+                    let isProductInCart = null;
 
-                        cartProduct.quantity = +cartProduct.quantity + +product.quantity;
+                    if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
 
-                        return cartProduct
 
-                    } else {
-                        return false
+                        isProductInCart = cart.cartProducts.find(cartProduct => {
+
+                            if (cartProduct.id === product.id) {
+
+                                cartProduct.quantity = +cartProduct.quantity + +product.quantity;
+
+                                return cartProduct
+
+                            } else {
+                                return false
+                            }
+                        })
+
                     }
-                })
 
 
-                console.log('returned', isProductInCart)
 
-                if (typeof isProductInCart === 'undefined') {
+                    if (!isProductInCart) {
 
-                    cart.push(product)
+                        console.log("test ",cart)
+                      
+                        cart.cartProducts.push(product)
 
+                    }
+
+                    let cartQuantity = calculateCart(cart, "total quantity");
+                    let cartTotalPrice = calculateCart(cart, "total price");
+
+
+                    console.log('cartQuantity', cartQuantity)
+
+                    console.log("cart total price", cartTotalPrice)
+
+                    updateCart({ cartProducts: cart.cartProducts, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } })
+
+                    // send back total cart quantity
+
+                    resolve({ cartProducts: cart.cartProducts, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } })
+
+                } catch (error) {
+                    console.log('Add to cart error ' + error)
+                    reject(error)
                 }
 
-                let cartQuantity = calculateCart(cart, "total quantity");
-
-                sessionStorage.setItem('cart', JSON.stringify(cart))
-
-                console.log('cartQuantity', cartQuantity)
-
-                // send back total cart quantity
-
-                resolve({ cartQuantity })
-
-            } catch (error) {
-                console.log('Add to cart error ' + error)
-                reject(error)
-            }
-
-        }, 1000)
+            }, 1000)
     })
 }
 
 export const getCartInfo = () => {
 
 
-    let cartProducts = typeof sessionStorage.cart != 'undefined' ? JSON.parse(sessionStorage.cart) : [];
+    let cartQuantity = calculateCart(cart, "total quantity");
+    let cartTotalPrice = calculateCart(cart, "total price");
 
+    if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
 
+      //  const cartInfo = { cartProducts: cart.cartProducts, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } }
 
-    if (cartProducts.length > 0) {
-
-        const cartQuantity = cartProducts.reduce((acc, product) => {
-
-            return acc + +product.quantity
-
-        }, 0)
-
-
-        const cartInfo = { cartProducts, cartInfo: { totalItems: cartQuantity } }
-
-        return cartInfo;
+        return JSON.parse(sessionStorage.cart)
     } else {
 
-        return { cartProducts, cartInfo: { totalItems: 0 } };
+        return cart
     }
 }
 
@@ -136,12 +146,15 @@ export const updateCart = (cart) => {
 
 export const calculateCart = (cart, info) => {
 
-    if (info === "total quantity") {
+    console.log("calculating cart ", cart)
 
+    if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
 
-        if (cart.length > 0) {
+        console.log("through")
 
-            const cartQuantity = cart.reduce((acc, product) => {
+        if (info === "total quantity") {
+
+            const cartQuantity = cart.cartProducts.reduce((acc, product) => {
 
                 return acc + +product.quantity
 
@@ -151,9 +164,20 @@ export const calculateCart = (cart, info) => {
             return cartQuantity
 
 
-        } else if (info === "total price") {
+        }
+
+        if (info === "total price") {
+
+            const cartTotalPrice = cart.cartProducts.reduce((acc, product) => {
+
+                return acc + +product.quantity * +product.price
+
+            }, 0)
 
 
+            console.log("calculating total price ", cartTotalPrice)
+
+            return cartTotalPrice
         }
     }
 }
@@ -166,26 +190,29 @@ export const removeProduct = (id, cart, call) => {
 
     // fix format 
 
-    let cartProducts = cart.cartProducts
+    let filteredCart = cart.cartProducts.filter(product => product.id !== id);
 
-    console.log("cart product ", cartProducts)
-    let filteredCart = cartProducts.filter(product => product.id !== id);
-    let cartQuantity = calculateCart(filteredCart, "total quantity");
-    cartProducts = [{ cartProducts: filteredCart, cartInfo: { totalItems: cartQuantity } }]
+    console.log("filtered cart " , filteredCart)
+    let cartQuantity = calculateCart({cartProducts: filteredCart}, "total quantity");
+    let cartTotalPrice = calculateCart({cartProducts:filteredCart}, "total price");
 
-    console.log("cart products filtered ", cartProducts)
-    updateCart(cartProducts[0].cartProducts)
+    console.log("cart quantity ", cartQuantity, "cart total price ", cartTotalPrice)
 
-    call(cartProducts)
+     cart = { cartProducts: filteredCart, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } }
+
+
+
+    updateCart(cart)
+
+    call(cart)
 
 }
 
 export const updateProductQuantity = (id, cart, action, call) => {
 
-    let cartProducts = cart.cartProducts
 
 
-    let filteredCart = cartProducts.reduce((result, product) => {
+    let filteredCart =  cart.cartProducts.reduce((result, product) => {
 
         console.log(product)
 
@@ -219,11 +246,14 @@ export const updateProductQuantity = (id, cart, action, call) => {
     }, [])
 
     console.log("filtered cart", filteredCart)
-    let cartQuantity = calculateCart(filteredCart, "total quantity");
-    cartProducts = [{ cartProducts: filteredCart, cartInfo: { totalItems: cartQuantity } }]
+    let cartQuantity = calculateCart({cartProducts: filteredCart}, "total quantity");
+    let cartTotalPrice = calculateCart({cartProducts: filteredCart}, "total price");
 
-    updateCart(cartProducts[0].cartProducts)
 
-    call(cartProducts)
+    cart = { cartProducts: filteredCart, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } }
+
+    updateCart(cart)
+
+    call(cart)
 
 }

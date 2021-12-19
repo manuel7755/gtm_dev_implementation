@@ -44,17 +44,13 @@ const ListingPage = () => {
             });
         
    
-           addToCart(addedToCartProduct).then((response) => { 
+           addToCart(cart,addedToCartProduct).then((updatedCart) => { 
                
-               console.log('product has been added to cart', response);
+               console.log('product has been added to cart', updatedCart);
    
             //    setSuccessAddToCart(true)
-   
-               let cart = getCartInfo();
-   
-               setCart({...cart})
-   
-               console.log('cartInfo ' , cart.cartInfo)
+
+               setCart({...updatedCart})
    
            
            })
