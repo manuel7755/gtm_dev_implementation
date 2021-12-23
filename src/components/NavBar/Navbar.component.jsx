@@ -19,6 +19,9 @@ import { useCheckMobileScreen } from '../../utility/Utility.component';
 
 import CartSlider from "../CartSlider/CartSlider.component";
 
+import { TransitionsModal }  from '../../components/Modal/Modal.component';
+
+
 
 
 const Navbar = (props) => {
@@ -69,8 +72,6 @@ const Navbar = (props) => {
 
     const activateCartSlider = () => {
 
-
-
     }
 
     return (
@@ -96,6 +97,7 @@ const Navbar = (props) => {
                     <ul>
                         <NavLink link='/contact'>Contact Us</NavLink>
                         <NavLink link='/catalogue'>Catalogue</NavLink>
+                        <NavLink link='/'>Login</NavLink>
                     </ul>
                 </div>
 
@@ -109,6 +111,11 @@ const Navbar = (props) => {
 
                             <NavLink link='/contact'>Contact Us</NavLink>
                             <NavLink link='/catalogue'>Catalogue</NavLink>
+                            {/* <button onClick={() => TransitionsModal()} className="login_btn">Login</button> */}
+                            <button  className="login_btn">
+                            <TransitionsModal name="Login"/>
+
+                            </button>
 
 
                         </>

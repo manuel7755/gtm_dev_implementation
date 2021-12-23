@@ -64,7 +64,7 @@ const CartSlider = ({ activeStatus }) => {
 
                 <div className="cart_total_amount">
 
-                    {cart.cartInfo && cart.cartInfo.totalPrice ? cart.cartInfo.totalPrice : 0}
+                    {cart.cartInfo && cart.cartInfo.totalPrice ? <h1 style={{textAlign: "center"}}>Total Price: ${cart.cartInfo.totalPrice}</h1> : 0}
 
 
 
