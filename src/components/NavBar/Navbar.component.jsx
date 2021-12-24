@@ -14,7 +14,7 @@ import * as ReactBsIcons from 'react-icons/bs';
 
 
 import { BrowserView, MobileView } from 'react-device-detect'; // uninstall
-import { apiCallProducts } from '../../utility/Utility.component';
+import { apiCallProducts, apiUserLogin } from '../../utility/Utility.component';
 import { useCheckMobileScreen } from '../../utility/Utility.component';
 
 import CartSlider from "../CartSlider/CartSlider.component";
@@ -67,6 +67,18 @@ const Navbar = (props) => {
                 })
             });
         }
+        
+    }
+
+
+    const userLogin = () => {
+
+        apiUserLogin((response) => {
+
+            console.log("login", response);
+
+        })
+        
     }
 
 
@@ -113,7 +125,7 @@ const Navbar = (props) => {
                             <NavLink link='/catalogue'>Catalogue</NavLink>
                             {/* <button onClick={() => TransitionsModal()} className="login_btn">Login</button> */}
                             <button  className="login_btn">
-                            <TransitionsModal name="Login"/>
+                            <TransitionsModal login={userLogin} name="Login"/>
 
                             </button>
 
@@ -130,10 +142,7 @@ const Navbar = (props) => {
                 <div className="cart_quantity">
                     <h5>{cart.cartInfo && cart.cartInfo.totalItems || 0}</h5>
                 </div>
-        
-
                 <CartSlider activeStatus={cartSlider}/>
-           
         </div>
 
     )

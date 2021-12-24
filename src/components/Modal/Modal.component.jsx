@@ -26,7 +26,7 @@ const style = {
   p: 4,
 };
 
-export function TransitionsModal({ name }) {
+export function TransitionsModal({ name, login }) {
   const [open, setOpen] = React.useState(false);
   
   const [password, setPassword] = React.useState("");
@@ -75,9 +75,11 @@ export function TransitionsModal({ name }) {
             </Typography>
             <br />
             <div className="login_modal_content">
-              <TextField id="outlined-basic" value={username} onChange={(e) => handleInput(e,setUsername)} label="Username" variant="outlined" />
-              <TextField id="outlined-basic" value={password} onChange={(e) => handleInput(e,setPassword)}  label="password" variant="outlined" />
-              <Button onClick={() => handleSubmit()}>Login</Button>
+
+          
+              <TextField id="outlined-basic" value="mor_2314" onChange={(e) => handleInput(e,setUsername)} label="Username" variant="outlined" />
+              <TextField id="outlined-basic" value="83r5^_" onChange={(e) => handleInput(e,setPassword)}  label="password" variant="outlined" />
+              <Button onClick={() => login()}>Login</Button>
             </div>
           </Box>
         </Fade>
