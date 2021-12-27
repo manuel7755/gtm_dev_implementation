@@ -1,36 +1,67 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState, useContext } from 'react';
 import { apiCallProducts } from '../../utility/Utility.component';
 import Product from '../../components/Product/Product.component';
+import { useHistory } from 'react-router-dom';
 
-class SearchPage extends Component {
 
-    constructor() {
-        super()
+import { addToCart } from "../../utility/Utility.component"
 
-        this.state = {
+import { CartContext } from '../../Contexts/Cart';
+import { SearchProductsContext } from '../../Contexts/SearchProducts';
 
-            pageType: "SearchPage",
-            products: []
 
-        }
-    }
+
+
+
+const SearchPage = function() {
+
+    const history = useHistory()
+
+
   
-    static getDerivedStateFromProps(props, state) {
+    const {searchProducts, setSearchProducts} = useContext(SearchProductsContext)
+    const { cart, setCart } = useContext(CartContext);
 
-        const sortedProducts = props.location.state.products;
-    
-            return { products: sortedProducts }
    
-    
-        return null;
-      }
-    
+
+    useEffect(() => {
+        const products = history.location.state.products;
+
+        setSearchProducts(searchProducts)
+      }, [searchProducts]);
 
 
+      function nativeAddToCart(productId) {
 
-    render() {
+        let products =  [ ...searchProducts ];
+        
+        if (products.length > 0) {
+        const addedToCartProduct = products.find(product => {
+            if (product.id === productId) {
+                        product.quantity = 1;
+                        return product
+                }  
+            });
+        
+   
+           addToCart(cart,addedToCartProduct).then((updatedCart) => { 
+               
+               console.log('product has been added to cart', updatedCart);
+   
+            //    setSuccessAddToCart(true)
 
-        const { pageType, products } = this.state;
+               setCart({...updatedCart})
+   
+           
+           })
+        }
+   
+           setTimeout(() => {
+   
+            //    setSuccessAddToCart(false)
+   
+           },3500)
+       }
 
 
         return (
@@ -38,12 +69,11 @@ class SearchPage extends Component {
             <div className="page_section listing_page_container">
 
                 <div className="listing_products_container">
-                    {products.map(product => <Product {...product} />)}
+                    {searchProducts.map(product => <Product addToCart={nativeAddToCart} {...product} />)}
                 </div>
             </div>
 
         )
-    }
 }
 
 

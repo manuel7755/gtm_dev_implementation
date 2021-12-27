@@ -38,7 +38,7 @@ const Product = ({ id, image, title, description, price, addToCart }) => {
 
             </div>
 
-            <Button link={false} clickAction={() => addToCart(id)}> Add To Cart</Button>
+            <Button link={window.location.pathname + window.location.search} clickAction={() => addToCart(id)}> Add To Cart</Button>
         </div>
         )
 

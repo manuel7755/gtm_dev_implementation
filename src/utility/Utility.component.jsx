@@ -58,11 +58,13 @@ export const apiUserLogin = (call) => {
           },
 
     }).then(res=>res.json())
-    .then(json=>console.log(json))
+    .then(json=> call(json))
 }
 
 export const getQueryParam = (paramName) => {
     const params = new URLSearchParams(window.location.search);
+
+    console.log("params", params)
     const paramValue = params.get(paramName);
 
     if (!!paramValue) {
@@ -129,7 +131,7 @@ export const addToCart = (cart,product) => {
 
                     // send back total cart quantity
 
-                    resolve({ cartProducts: cart.cartProducts, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } })
+                    resolve({ cartProducts: cart.cartProducts, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice }})
 
                 } catch (error) {
                     console.log('Add to cart error ' + error)
@@ -197,7 +199,7 @@ export const calculateCart = (cart, info) => {
 
             console.log("calculating total price ", cartTotalPrice)
 
-            return cartTotalPrice
+            return cartTotalPrice.toFixed(2)
         }
     }
 }

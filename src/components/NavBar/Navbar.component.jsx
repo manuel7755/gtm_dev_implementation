@@ -2,6 +2,10 @@ import React, { useState, useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { CartContext } from '../../Contexts/Cart';
+import { LoginContext } from '../../Contexts/Login';
+import { SearchProductsContext } from '../../Contexts/SearchProducts';
+
+
 
 
 import './Navbar.styles.scss';
@@ -31,6 +35,9 @@ const Navbar = (props) => {
     const isMobile = useCheckMobileScreen();
     const [navigationMenuToggle, setNavigationMenuToggle] = useState(false);
     const { cart, setCart } = useContext(CartContext);
+    const { login, setLogin } = useContext(LoginContext);
+    const { searchProducts, setSearchProducts } = useContext(SearchProductsContext);
+
 
     const [cartSlider, setCartSlider ] = useState(false);
     
@@ -42,6 +49,8 @@ const Navbar = (props) => {
     const inputListener = (e) => {
 
         if (e.key === 'Enter') {
+
+            console.log("hitting")
 
             const searchTerm = e.target.value;
 
@@ -58,6 +67,10 @@ const Navbar = (props) => {
                         return product
                     }
                 })
+
+
+                setSearchProducts(sortedProducts)
+
 
                 props.history.push({
                     pathname: '/search_results',
@@ -77,8 +90,17 @@ const Navbar = (props) => {
 
             console.log("login", response);
 
+            localStorage.setItem("loggedIn", JSON.stringify(response))
+            setLogin(true)
+
         })
         
+    }
+
+    const userLogout = () => {
+
+        localStorage.removeItem("loggedIn")
+        setLogin(false)
     }
 
 
@@ -104,7 +126,6 @@ const Navbar = (props) => {
 
             {navigationMenuToggle ?
 
-
                 <div style={{ position: "fixed", top: "8rem", width: "100%", height: "auto", background: "black", padding: "1rem" }}>
                     <ul>
                         <NavLink link='/contact'>Contact Us</NavLink>
@@ -123,11 +144,15 @@ const Navbar = (props) => {
 
                             <NavLink link='/contact'>Contact Us</NavLink>
                             <NavLink link='/catalogue'>Catalogue</NavLink>
-                            {/* <button onClick={() => TransitionsModal()} className="login_btn">Login</button> */}
+                            {!login ? 
                             <button  className="login_btn">
                             <TransitionsModal login={userLogin} name="Login"/>
 
                             </button>
+
+                               : <button onClick={() => userLogout()} className="logout_btn">
+                                   Logout
+                               </button> }
 
 
                         </>

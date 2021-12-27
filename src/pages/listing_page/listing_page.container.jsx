@@ -14,18 +14,20 @@ import './listing_page.styles.scss';
 // do a find method based on product id
 const ListingPage = () => {
 
-    const {products, setProducts} = useContext(ListingProductsContext);
+    const {listingProducts, setListingProducts} = useContext(ListingProductsContext);
     const { cart, setCart } = useContext(CartContext);
 
     useEffect(() => {
 
-        if (products && !products.length) {
+        if (listingProducts && !listingProducts.length) {
 
             apiCallProducts((products) => {
 
-                setProducts(products)
+                console.log("listing products, products", products)
 
-                sessionStorage.setItem('listingProducts', products)
+                setListingProducts([...products])
+
+                sessionStorage.setItem('listingProducts', JSON.stringify(products))
 
             });
         }
@@ -33,15 +35,17 @@ const ListingPage = () => {
 
     function nativeAddToCart(productId) {
 
-        let listingProducts =  [ ...products ];
+        let products =  [ ...listingProducts ];
         
-        if (listingProducts.length > 0) {
-        const addedToCartProduct = listingProducts.find(product => {
+        if (products.length > 0) {
+        const addedToCartProduct = products.find(product => {
             if (product.id === productId) {
                         product.quantity = 1;
                         return product
                 }  
             });
+
+            console.log("listing add to cart ", productId, "added product to cart", addedToCartProduct)
         
    
            addToCart(cart,addedToCartProduct).then((updatedCart) => { 
@@ -69,7 +73,7 @@ const ListingPage = () => {
         <div className="page_section listing_page_container">
 
             <div className="listing_products_container">
-                {products.map(product => <div key={product.id}> <Product addToCart={nativeAddToCart} {...product} /> </div>)}
+                {listingProducts.map(product => <div key={product.id}> <Product addToCart={nativeAddToCart} {...product} /> </div>)}
             </div>
 
 
