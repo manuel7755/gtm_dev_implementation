@@ -54,26 +54,6 @@ export function TransitionsModal({ name, login }) {
 
   }
 
-  function nativeAddToCart() {
-
-    let updatedProduct =  { ...product };
-
-    console.log('product at addToCart ' , updatedProduct)
-    
-
-       addToCart(cart, updatedProduct).then((updatedCart) => { 
-           
-           console.log('product has been added to cart', updatedCart);
-
-
-           setCart({...updatedCart})
-
-           console.log('cartInfo ' , updatedCart.cartInfo)
-
-       
-       })
-   }
-
 
 
   return (

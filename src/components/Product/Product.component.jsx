@@ -28,10 +28,7 @@ const Product = ({ id, image, title, description, price, addToCart }) => {
             </div>
             <div className="product_content">
                 <h1 className="product_title">{title}</h1>
-           
-
             </div>
-
             <div className="product_content product_price">
 
                 ${price}

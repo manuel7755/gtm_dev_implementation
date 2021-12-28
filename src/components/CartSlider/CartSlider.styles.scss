@@ -12,7 +12,8 @@
     top: 5rem;
     z-index: -1;
     transition: display 2s ease;
-    padding: 3.5rem 1rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
     overflow : scroll;
     
     &--true {
@@ -31,6 +32,7 @@
       }
 
 .addToCartSlider_content {
+    margin-bottom: 6rem;
     width: 100%;
 
 

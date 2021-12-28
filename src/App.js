@@ -12,18 +12,15 @@ import { ListingProductsContext } from "./Contexts/ListingProducts";
 import { SearchProductsContext } from "./Contexts/SearchProducts";
 import { LoginContext } from "./Contexts/Login"
 
-
-
 import Homepage from './pages/home_page/home_page.container';
-import Cartpage from './pages/cart_page/cart_page.container';
 import Searchpage from './pages/search_page/search_page.container';
 import Listingpage from './pages/listing_page/listing_page.container';
 import Productpage from './pages/product_page/product_page.container';
-
+import Contactpage from './pages/contact_page/contact_page.container';
+import Checkoutpage from './pages/checkout_page/checkout_page.container';
 
 import Utility from "./utility/Utility.component";
 import NavBar from './components/NavBar/Navbar.component';
-
 import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from './utility/Utility.component';
 
 
@@ -40,7 +37,6 @@ function App() {
   const [cart, setCart] = useState({});
   const [listingProducts, setListingProducts] = useState([]);
   const [searchProducts, setSearchProducts] = useState([]);
-
   const [login, setLogin] = useState(false);
 
 
@@ -57,15 +53,16 @@ function App() {
   return (
     <div className="App">
       <LoginContext.Provider value={{ login, setLogin }}>
-        <SearchProductsContext.Provider  value={{ searchProducts, setSearchProducts }}>
+        <SearchProductsContext.Provider value={{ searchProducts, setSearchProducts }}>
           <ListingProductsContext.Provider value={{ listingProducts, setListingProducts }}>
             <CartContext.Provider value={{ cart, setCart }}>
               <NavBar />
               <Switch>
-                <Route path="/cart" component={Cartpage} />
                 <Route path="/search_results" component={Searchpage} />
                 <Route path="/catalogue" component={Listingpage} />
+                <Route path="/contact" component={Contactpage} />
                 <Route path="/product" component={Productpage} />
+                <Route path="/checkout" component={Checkoutpage} />
                 <Route exact path="/" component={Homepage} />
               </Switch>
             </CartContext.Provider>

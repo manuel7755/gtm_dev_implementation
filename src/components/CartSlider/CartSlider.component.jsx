@@ -61,15 +61,10 @@ const CartSlider = ({ activeStatus }) => {
                         removeProduct={removeProductNative} 
                         {...product}/>)
                 }) : <h1>There are no items on cart</h1>}
-
                 <div className="cart_total_amount">
-
                     {cart.cartInfo && cart.cartInfo.totalPrice ? <h1 style={{textAlign: "center"}}>Total Price: ${cart.cartInfo.totalPrice}</h1> : 0}
-
-
-
                 </div>
-                <Button link="/cart">Checkout</Button>
+                <Button link="/checkout">Checkout</Button>
             </div>
         </div>
     )
