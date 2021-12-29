@@ -1,5 +1,5 @@
 import React, { Component, useState, useContext, useEffect } from 'react';
-import './product.styles.scss';
+import './product_page.styles.scss';
 
 import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
 import { Alert } from '@material-ui/lab';

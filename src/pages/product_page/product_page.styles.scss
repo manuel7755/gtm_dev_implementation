@@ -4,8 +4,10 @@
 .productPage_container {
     background: yellow;
     width:100%;
+    height: 100%;
     display: flex;
     align-items: center;
+    padding: 2rem;
 
 
     &_product_container {
@@ -13,13 +15,14 @@
         justify-content: space-around;
         align-items: center;
         width:100%;
+        height: auto;
 
         background:red;
         padding: 2rem 0;
 
         @include responsive(phone) {
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-around;
 
 
           }
@@ -40,8 +43,8 @@
 
             @include responsive(phone) {
                 width: 90%;
-                height: 35rem;
-                margin-bottom: 2rem;
+                height: 25rem;
+                margin: 4rem 0 2rem 0;
     
               }
         }
@@ -57,6 +60,7 @@
             flex-direction: column;
             @include responsive(phone) {
                 width: 90%;
+                height: auto;
     
     
               }
