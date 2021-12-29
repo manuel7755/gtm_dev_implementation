@@ -11,15 +11,19 @@
 
 & .product_content {
         width: 100%;
-        height: auto;
+        height: 35rem;
         padding: 2px;
         margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
 
     
-    &.product_image {
-        height: 25rem;
-        width: 100%;
-
+    & .product_image {
+        height: 20rem;
+        width: 20rem;
+        
+        margin: 0 auto;
         }
     
     & .product_description{

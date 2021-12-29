@@ -15,23 +15,25 @@ const CartSliderProduct = ({ image, title, price, quantity, id, removeProduct, u
     return (
         <div className="cartSliderProduct_container">
 
-            <div className="cartSliderProduct_image">
-
-                <img src={image} alt="" />
-
-            </div>
-
             <div className="cartSliderProduct_content">
 
+
+                <div className="cartSliderProduct_image">
+
+                    <img src={image} alt="" />
+
+                </div>
+
+
                 <div className="product_name_container">
-                    <h1 className="product_name">{title}</h1>
+                    <h2 className="product_name">{title}</h2>
 
                 </div>
 
 
                 <div className="product_price">
 
-                    <div onClick={() => updateQuantity(id,"decrease")} className="product_btn_quantity_decrease">
+                    <div onClick={() => updateQuantity(id, "decrease")} className="product_btn_quantity_decrease">
 
                         <ReactBsIcons.BsFillArrowDownCircleFill />
 
@@ -41,7 +43,7 @@ const CartSliderProduct = ({ image, title, price, quantity, id, removeProduct, u
                     {price} X {quantity}
 
 
-                    <div onClick={() => updateQuantity(id,"increase")} className="product_btn_quantity_increase">
+                    <div onClick={() => updateQuantity(id, "increase")} className="product_btn_quantity_increase">
                         <ReactBsIcons.BsFillArrowUpCircleFill />
 
                     </div>

@@ -15,7 +15,7 @@ import {
 const Button = (props) => (
 
     <Link to={props.link} className="button_container">
-        <button onClick={props.clickAction} className="cta_button">
+        <button disabled={props.disabled} onClick={props.clickAction} className="cta_button">
             {props.children}
         </button>
     </Link>

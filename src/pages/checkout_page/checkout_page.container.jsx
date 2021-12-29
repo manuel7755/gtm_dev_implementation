@@ -1,8 +1,8 @@
 import "./checkout_page.styles.scss";
-
+import { CartContext } from '../../Contexts/Cart';
 import CheckoutStepper from "../../components/CheckoutStepper/CheckoutStepper.component"
 
-import * as React from 'react';
+import React, { Component, useEffect, useState , useContext} from 'react';
 
 import {
     Select,
@@ -28,6 +28,8 @@ const CheckoutPage = () => {
     const [age, setAge] = React.useState('');
     const [value, setValue] = React.useState('');
 
+    const { cart, setCart } = useContext(CartContext);
+
     const handleChange = (event, set) => {
       set(event.target.value);
     };
@@ -41,64 +43,18 @@ const CheckoutPage = () => {
     }
 
 
+    useEffect(() => { 
+
+
+        console.log("cart ", cart)
+
+    })
+
+
 
     return (
         <div className="page_section checkout_page_container">
-
-            <CheckoutStepper />
-
-
-            {/* <form onSubmit={() => handleSubmit()}>
-            <h1>Checkout</h1>
-                <TextField id="filled-basic" label="name" variant="filled" />
-                <TextField id="filled-basic" label="email" variant="filled" />
-                <br />
-
-                <Box sx={{ minWidth: 120 }}>
-
-                    <FormControl fullWidth>
-
-                        <InputLabel id="demo-simple-select-label">Subject</InputLabel>
-
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={age}
-                            label="Age"
-                            onChange={(e) => handleChange(e,setAge)}
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
-
-                </Box>
-
-                <TextField
-                    id="filled-multiline-flexible"
-                    label="Message"
-                    multiline
-                    maxRows={4}
-                    value={value}
-                    onChange={(e) => handleChange(e,setValue)}
-                    variant="filled"
-                />
-
-                <div style={{ width: "35%", marginTop: "2rem" }}>
-                    <FormLabel component="legend">Department</FormLabel>
-                    <RadioGroup
-                        aria-label="gender"
-                        defaultValue="customer service"
-                        name="radio-buttons-group"
-                    >
-                        <FormControlLabel value="customer service" control={<Radio />} label="Order" />
-                        <FormControlLabel value="male" control={<Radio />} label="Technical" />
-                        <FormControlLabel value="other" control={<Radio />} label="Other" />
-                    </RadioGroup>
-                </div>
-                <Button type="submit" variant="contained">Send</Button>
-            </form> */}
+            <CheckoutStepper cart={cart} />
         </div>
     )
 }

@@ -1,10 +1,19 @@
 .checkoutstep_container {
 
-    width: 100%;
-    height: 100%;
-    display: flex;
-    margin: 0 auto;
-    flex-direction: column;
+    width: 60%;
+    margin-top: 2rem;
+
+
+
+    .order_confirmation_container{
+        width:100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: center;
+
+
+    }
 
 
 

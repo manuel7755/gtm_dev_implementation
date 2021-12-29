@@ -1,9 +1,13 @@
 import * as React from 'react';
+
+import "./CheckoutStepper.styles.scss";
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Typography from '@mui/material/Typography';
+
+import Product from "../Product/Product.component";
 
 
 import {
@@ -22,11 +26,19 @@ import {
 
 
 import ContactForm from "../../components/ContactForm/ContactForm.component"
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+const steps = ['Billing', 'Payment', 'Order Confirmation'];
 
-export default function HorizontalNonLinearStepper() {
+export default function HorizontalNonLinearStepper({ cart }) {
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState({});
+    const [creditCard, setCreditCard] = React.useState(0);
+    const [address, setAddress] = React.useState("");
+    const [postalCode, setPostalCode] = React.useState("");
+    const [creditCardExpiryDate, setCreditCardExpiryDate] = React.useState(0);
+    const [creditCardCode, setCreditCardCode] = React.useState(0);
+    const [coupon, setCoupon] = React.useState(0);
+    const [city, setCity] = React.useState("");
+
 
     const totalSteps = () => {
         return steps.length;
@@ -74,6 +86,13 @@ export default function HorizontalNonLinearStepper() {
         setCompleted({});
     };
 
+
+    const handleInputChange = (e, setAction) => {
+
+        console.log("value", e.target.value)
+
+        setAction(e.target.value)
+    }
     return (
         <div className="checkoutstep_container">
             <Box sx={{ width: '100%' }}>
@@ -101,17 +120,36 @@ export default function HorizontalNonLinearStepper() {
                         <React.Fragment>
                             <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
 
-                            <div style={{ width: "100%", height: "10rem" }}>
+                            {/* <div style={{ width: "100%", height: "auto", minHeight: "20rem" }}> */}
 
                                 {activeStep + 1 === 1 ?
 
                                     <FormControl style={{ width: "100%" }}>
 
-                                        <FormLabel component="legend">Billing Address</FormLabel>
-                                        <TextField fullWidth={true} />
-                                        <FormLabel component="legend">City</FormLabel>
+                                        <inputLabel component="legend1">Billing Address</inputLabel>
+                                        <TextField fullWidth={true}
 
-                                        <TextField fullWidth={true} />
+                                            value={address}
+                                            onChange={(e) => handleInputChange(e, setAddress)}
+
+                                        />
+                                        <inputLabel component="legend">City</inputLabel>
+
+                                        <TextField fullWidth={true}
+                                            value={city}
+                                            onChange={(e) => handleInputChange(e, setCity)}
+
+                                        />
+                                        <inputLabel component="legend">Postal Code</inputLabel>
+                                        <TextField fullWidth={true}
+
+                                            value={postalCode}
+                                            onChange={(e) => handleInputChange(e, setPostalCode)}
+
+
+
+                                        />
+
 
 
 
@@ -120,18 +158,82 @@ export default function HorizontalNonLinearStepper() {
                                     :
 
 
-                                    activeStep + 1 === 2 ? <h1>hello 2</h1> :
+                                    activeStep + 1 === 2 ?
+
+                                        <FormControl style={{ width: "100%" }}>
+
+                                            <inputLabel
+                                                component="legend"
 
 
-                                        activeStep + 1 === 3 ? <h1>hello 3</h1> :
+                                            >Credit Card</inputLabel>
+                                            <TextField
+                                                name="creditCard"
+                                                value={creditCard}
+                                                onChange={(e) => handleInputChange(e, setCreditCard)}
+
+                                                fullWidth={true} />
 
 
+                                            <inputLabel component="legend">Expiry</inputLabel>
+
+                                            <TextField 
+                                            fullWidth={true} 
+                                            value={creditCardExpiryDate}
+                                            onChange={(e) => handleInputChange(e, setCreditCardExpiryDate)}
+                                        
+                                            
+                                            />
+                                            <inputLabel component="legend">Code</inputLabel>
+                                            <TextField
+                                             fullWidth={true} 
+                                             value={creditCardCode}
+                                             onChange={(e) => handleInputChange(e, setCreditCardCode)}
+                                             
+        
+                                             />
+
+                                            <inputLabel component="legend">Coupon</inputLabel>
+                                            <TextField     
+                                            fullWidth={true}
+                                            value={coupon}
+                                            onChange={(e) => handleInputChange(e, setCoupon)} 
+                                        
+                                        
+                                        />
+                                        </FormControl>
 
 
+                                        :
+                                        activeStep + 1 === 3 ?
 
-                                            null}
+                                            <>
 
-                            </div>
+                                                <h1>Order Confirmation</h1>
+
+                                                <div className="order_confirmation_container">
+
+                                                    {cart && cart.cartProducts.length > 0 ?
+
+
+                                                        cart.cartProducts.map(product => {
+
+                                                            return (<Product ommit="addToCart" {...product} />)
+                                                        })
+
+
+                                                        : null}
+
+                                                    
+
+                                                </div>
+                                                <h2>Total Price: {cart.cartInfo.totalPrice}</h2>
+                                                    <h2>Tax: {(cart.cartInfo.totalPrice * .13).toFixed(2)}</h2>
+                                            </>
+
+                                            : null}
+
+                            {/* </div> */}
 
 
 
