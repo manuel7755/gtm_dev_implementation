@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { CartContext } from '../../Contexts/Cart';
 import { LoginContext } from '../../Contexts/Login';
 import { SearchProductsContext } from '../../Contexts/SearchProducts';
+import { LoadingSpinnerContext } from '../../Contexts/LoadingSpinner';
 
 
 
@@ -23,7 +24,7 @@ import { useCheckMobileScreen } from '../../utility/Utility.component';
 
 import CartSlider from "../CartSlider/CartSlider.component";
 
-import { TransitionsModal }  from '../../components/Modal/Modal.component';
+import { TransitionsModal } from '../../components/Modal/Modal.component';
 
 
 
@@ -37,11 +38,11 @@ const Navbar = (props) => {
     const { cart, setCart } = useContext(CartContext);
     const { login, setLogin } = useContext(LoginContext);
     const { searchProducts, setSearchProducts } = useContext(SearchProductsContext);
+    const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
+
+    const [cartSlider, setCartSlider] = useState(false);
 
 
-    const [cartSlider, setCartSlider ] = useState(false);
-    
-    
     useEffect(() => {
 
     }, [useCheckMobileScreen]);
@@ -51,6 +52,8 @@ const Navbar = (props) => {
         if (e.key === 'Enter') {
 
             console.log("hitting")
+
+            setLoadingSpinner(true)
 
             const searchTerm = e.target.value;
 
@@ -71,16 +74,21 @@ const Navbar = (props) => {
 
                 setSearchProducts(sortedProducts)
 
+             setLoadingSpinner(false)
 
-                props.history.push({
-                    pathname: '/search_results',
-                    search: `?q=${searchTerm}`,
-                    state: { products: sortedProducts }
 
-                })
-            });
-        }
         
+            });
+
+            props.history.push({
+                pathname: '/search_results',
+                search: `?q=${searchTerm}`,
+                state: { searchKeyword: searchTerm }
+
+            })
+
+        }
+
     }
 
 
@@ -94,7 +102,7 @@ const Navbar = (props) => {
             setLogin(true)
 
         })
-        
+
     }
 
     const userLogout = () => {
@@ -126,19 +134,19 @@ const Navbar = (props) => {
 
             {navigationMenuToggle ?
 
-                <div style={{ position: "fixed", textAlign:"center", top: "8rem", width: "100%", height: "auto", background: "black", padding: "1rem" }}>
+                <div style={{ position: "fixed", textAlign: "center", top: "8rem", width: "100%", height: "auto", background: "black", padding: "1rem" }}>
                     <ul>
                         <NavLink link='/contact'>Contact Us</NavLink>
                         <NavLink link='/catalogue'>Catalogue</NavLink>
-                        {!login ? 
-                            <button  className="login_btn">
-                            <TransitionsModal login={userLogin} name="Login"/>
+                        {!login ?
+                            <button className="login_btn">
+                                <TransitionsModal login={userLogin} name="Login" />
 
                             </button>
 
-                               : <button onClick={() => userLogout()} className="logout_btn">
-                                   Logout
-                               </button> }
+                            : <button onClick={() => userLogout()} className="logout_btn">
+                                Logout
+                            </button>}
 
                     </ul>
                 </div>
@@ -153,15 +161,15 @@ const Navbar = (props) => {
 
                             <NavLink link='/contact'>Contact Us</NavLink>
                             <NavLink link='/catalogue'>Catalogue</NavLink>
-                            {!login ? 
-                            <button  className="login_btn">
-                            <TransitionsModal login={userLogin} name="Login"/>
+                            {!login ?
+                                <button className="login_btn">
+                                    <TransitionsModal login={userLogin} name="Login" />
 
-                            </button>
+                                </button>
 
-                               : <button onClick={() => userLogout()} className="logout_btn">
-                                   Logout
-                               </button> }
+                                : <button onClick={() => userLogout()} className="logout_btn">
+                                    Logout
+                                </button>}
 
 
                         </>
@@ -172,11 +180,11 @@ const Navbar = (props) => {
                 </ul>
             </div>
             {/* <NavLink link='/cart'> */}
-                <ReactBsIcons.BsFillCartPlusFill onClick={() => setCartSlider(!cartSlider)} />
-                <div className="cart_quantity">
-                    <h5>{cart.cartInfo && cart.cartInfo.totalItems || 0}</h5>
-                </div>
-                <CartSlider activeStatus={cartSlider}/>
+            <ReactBsIcons.BsFillCartPlusFill onClick={() => setCartSlider(!cartSlider)} />
+            <div className="cart_quantity">
+                <h5>{cart.cartInfo && cart.cartInfo.totalItems || 0}</h5>
+            </div>
+            <CartSlider activeStatus={cartSlider} />
         </div>
 
     )

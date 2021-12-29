@@ -68,15 +68,12 @@ export const getQueryParam = (paramName) => {
     const paramValue = params.get(paramName);
 
     if (!!paramValue) {
-
         return paramValue;
-
     }
 }
 
 
 export const addToCart = (cart,product) => {
-
 
     return new Promise((resolve, reject) => {
 
@@ -108,8 +105,6 @@ export const addToCart = (cart,product) => {
                         })
 
                     }
-
-
 
                     if (!isProductInCart) {
 

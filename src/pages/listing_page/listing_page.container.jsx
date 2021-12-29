@@ -1,11 +1,15 @@
 import React, { Component, useEffect, useState , useContext} from 'react';
+import './listing_page.styles.scss';
+
 import Product from '../../components/Product/Product.component';
 import { apiCallProducts } from '../../utility/Utility.component';
 
 import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
 import { CartContext } from '../../Contexts/Cart';
+import { LoadingSpinnerContext } from '../../Contexts/LoadingSpinner';
 import { ListingProductsContext } from '../../Contexts/ListingProducts';
-import './listing_page.styles.scss';
+
+import Spinner from "../../components/Spinner/Spinner.component";
 
 
 
@@ -16,6 +20,7 @@ const ListingPage = () => {
 
     const {listingProducts, setListingProducts} = useContext(ListingProductsContext);
     const { cart, setCart } = useContext(CartContext);
+    const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
 
     useEffect(() => {
 
@@ -73,7 +78,11 @@ const ListingPage = () => {
         <div className="page_section listing_page_container">
 
             <div className="listing_products_container">
-                {listingProducts.map(product => <div key={product.id}> <Product addToCart={nativeAddToCart} {...product} /> </div>)}
+                {listingProducts.length > 0 || LoadingSpinner ?
+                
+                listingProducts.map(product => <div key={product.id}> <Product addToCart={nativeAddToCart} {...product} /> </div>)
+            
+            : <Spinner/>}
             </div>
 
 

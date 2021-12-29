@@ -11,6 +11,8 @@ import { CartContext } from './Contexts/Cart';
 import { ListingProductsContext } from "./Contexts/ListingProducts";
 import { SearchProductsContext } from "./Contexts/SearchProducts";
 import { LoginContext } from "./Contexts/Login"
+import { LoadingSpinnerContext } from "./Contexts/LoadingSpinner"
+
 
 import Homepage from './pages/home_page/home_page.container';
 import Searchpage from './pages/search_page/search_page.container';
@@ -38,6 +40,8 @@ function App() {
   const [listingProducts, setListingProducts] = useState([]);
   const [searchProducts, setSearchProducts] = useState([]);
   const [login, setLogin] = useState(false);
+  const [loadingSpinner, setLoadingSpinner] = useState(false);
+
 
 
   // app initialization function
@@ -52,6 +56,7 @@ function App() {
 
   return (
     <div className="App">
+      <LoadingSpinnerContext.Provider value={{loadingSpinner, setLoadingSpinner}}>
       <LoginContext.Provider value={{ login, setLogin }}>
         <SearchProductsContext.Provider value={{ searchProducts, setSearchProducts }}>
           <ListingProductsContext.Provider value={{ listingProducts, setListingProducts }}>
@@ -69,6 +74,7 @@ function App() {
           </ListingProductsContext.Provider>
         </SearchProductsContext.Provider>
       </LoginContext.Provider>
+      </LoadingSpinnerContext.Provider>
     </div>
   );
 }

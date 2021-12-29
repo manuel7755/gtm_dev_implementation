@@ -8,6 +8,10 @@ import { addToCart } from "../../utility/Utility.component"
 
 import { CartContext } from '../../Contexts/Cart';
 import { SearchProductsContext } from '../../Contexts/SearchProducts';
+import { LoadingSpinnerContext } from '../../Contexts/LoadingSpinner';
+
+
+import Spinner from "../../components/Spinner/Spinner.component";
 
 
 
@@ -21,12 +25,14 @@ const SearchPage = function() {
   
     const {searchProducts, setSearchProducts} = useContext(SearchProductsContext)
     const { cart, setCart } = useContext(CartContext);
+    const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
 
-   
+
+
 
     useEffect(() => {
-        const products = history.location.state.products;
-
+    
+        // const searchKeyword = history.location.state.searchKeyword;
         setSearchProducts(searchProducts)
       }, [searchProducts]);
 
@@ -69,7 +75,11 @@ const SearchPage = function() {
             <div className="page_section listing_page_container">
 
                 <div className="listing_products_container">
-                    {searchProducts.map(product => <Product addToCart={nativeAddToCart} {...product} />)}
+                {searchProducts.length > 0 || LoadingSpinner ?
+                
+                    searchProducts.map(product => <Product addToCart={nativeAddToCart} {...product} />)
+
+                :  <Spinner/>}
                 </div>
             </div>
 
