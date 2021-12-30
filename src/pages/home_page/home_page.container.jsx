@@ -14,63 +14,50 @@ import Button from '../../components/Button/Button.component';
 
 
 
-class Homepage extends Component {
+const Homepage = () => {
 
-    constructor() {
-        super()
-        this.state = {
-            pageType: "homepage"
-        }
-    }
+    return (
+        <>
+            <div className='page_section homepage_container'>
+                <div className='banner_container'>
+                    <Banner bannerImage={HeroBanner} />
+                </div>
+                <div className="promotions_container">
+                    <div className="promotion_slot">
 
-
-    render() {
-
-        const { pageType } = this.state;
-
-        return (
-            <>
-                <div className='page_section homepage_container'>
-                    <div className='banner_container'>
-                        <Banner bannerImage={HeroBanner} />
+                        <Banner bannerImage={PromoShoes} />
+                        <div className="promotion_title">
+                            <h1>Shoes</h1>
+                        </div>
+                        <Button link='/catalogue'>Shop Now</Button>
                     </div>
-                    <div className="promotions_container">
-                        <div className="promotion_slot">
+                    <div className="promotion_slot">
 
-                            <Banner bannerImage={PromoShoes} />
-                            <div className="promotion_title">
-                                <h1>Shoes</h1>
-                            </div>
-                            <Button link='/catalogue'>Shop Now</Button>
+                        <Banner bannerImage={PromoBackpacks} />
+                        <div className="promotion_title">
+                            <h1>Backpacks</h1>
                         </div>
-                        <div className="promotion_slot">
+                        <Button link='/catalogue'>Shop Now</Button>
+                    </div>
+                    <div className="promotion_slot">
 
-                            <Banner  bannerImage={PromoBackpacks} />
-                            <div className="promotion_title">
-                                <h1>Backpacks</h1>
-                            </div>
-                            <Button  link='/catalogue'>Shop Now</Button>
+                        <Banner bannerImage={PromoCouches} />
+                        <div className="promotion_title">
+                            <h1>Couches</h1>
                         </div>
-                        <div className="promotion_slot">
-
-                            <Banner bannerImage={PromoCouches} />
-                            <div className="promotion_title">
-                                <h1>Couches</h1>
-                            </div>
-                            <Button link='/catalogue'>Shop Now</Button>
+                        <Button link='/catalogue'>Shop Now</Button>
+                    </div>
+                    <div className="promotion_slot">
+                        <Banner bannerImage={PromoDinnerSets} />
+                        <div className="promotion_title">
+                            <h1>Dinner Sets</h1>
                         </div>
-                        <div className="promotion_slot">
-                            <Banner bannerImage={PromoDinnerSets} />
-                            <div className="promotion_title">
-                                <h1>Dinner Sets</h1>
-                            </div>
-                            <Button link='/catalogue'>Shop Now</Button>
-                        </div>
+                        <Button link='/catalogue'>Shop Now</Button>
                     </div>
                 </div>
-            </>
-        )
-    }
+            </div>
+        </>
+    )
 }
 
 

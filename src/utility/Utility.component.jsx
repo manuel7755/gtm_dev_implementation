@@ -274,3 +274,15 @@ export const updateProductQuantity = (id, cart, action, call) => {
     call(cart)
 
 }
+
+
+export const generateRandomOrderNumber = () => {
+    let array = [];  
+    
+        for (let i = 0; i < 9; i++) {
+            let randomNumber = Math.floor(Math.random() * (10 - 1)) + 1;
+            array.push(randomNumber)
+        }
+    
+           return array.join("")
+    }

@@ -8,6 +8,8 @@ import StepButton from '@mui/material/StepButton';
 import Typography from '@mui/material/Typography';
 
 import Product from "../Product/Product.component";
+import OrderConfirmation from "../OrderConfirmation/OrderConfirmation.component";
+import { generateRandomOrderNumber } from "../../utility/Utility.component";
 
 
 import {
@@ -29,6 +31,8 @@ import ContactForm from "../../components/ContactForm/ContactForm.component"
 const steps = ['Billing', 'Payment', 'Order Confirmation'];
 
 export default function HorizontalNonLinearStepper({ cart }) {
+
+
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState({});
     const [creditCard, setCreditCard] = React.useState(0);
@@ -38,6 +42,11 @@ export default function HorizontalNonLinearStepper({ cart }) {
     const [creditCardCode, setCreditCardCode] = React.useState(0);
     const [coupon, setCoupon] = React.useState(0);
     const [city, setCity] = React.useState("");
+    const [orderNumber, setOrderNumber] = React.useState("");
+
+
+
+
 
 
     const totalSteps = () => {
@@ -79,6 +88,8 @@ export default function HorizontalNonLinearStepper({ cart }) {
         newCompleted[activeStep] = true;
         setCompleted(newCompleted);
         handleNext();
+
+        generateOrderNumber()
     };
 
     const handleReset = () => {
@@ -92,6 +103,13 @@ export default function HorizontalNonLinearStepper({ cart }) {
         console.log("value", e.target.value)
 
         setAction(e.target.value)
+    }
+
+    const generateOrderNumber = () => {
+
+
+        setOrderNumber(generateRandomOrderNumber())
+
     }
     return (
         <div className="checkoutstep_container">
@@ -109,11 +127,20 @@ export default function HorizontalNonLinearStepper({ cart }) {
                     {allStepsCompleted() ? (
                         <React.Fragment>
                             <Typography sx={{ mt: 2, mb: 1 }}>
-                                All steps completed - you&apos;re finished
+                                <h2> All steps are completed, thank you for your order! </h2>
                             </Typography>
                             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                 <Box sx={{ flex: '1 1 auto' }} />
-                                <Button onClick={handleReset}>Reset</Button>
+                       
+
+                                <OrderConfirmation
+                                    cart={cart}
+                                    orderId={orderNumber}
+                                
+                                />
+
+
+                                {/* <Button onClick={handleReset}>Reset</Button> */}
                             </Box>
                         </React.Fragment>
                     ) : (
@@ -126,7 +153,7 @@ export default function HorizontalNonLinearStepper({ cart }) {
 
                                     <FormControl style={{ width: "100%" }}>
 
-                                        <inputLabel component="legend1">Billing Address</inputLabel>
+                                        <inputLabel component="legend">Billing Address</inputLabel>
                                         <TextField fullWidth={true}
 
                                             value={address}
@@ -149,10 +176,6 @@ export default function HorizontalNonLinearStepper({ cart }) {
 
 
                                         />
-
-
-
-
                                     </FormControl>
 
                                     :
@@ -208,13 +231,11 @@ export default function HorizontalNonLinearStepper({ cart }) {
                                         activeStep + 1 === 3 ?
 
                                             <>
-
                                                 <h1>Order Confirmation</h1>
 
                                                 <div className="order_confirmation_container">
 
                                                     {cart && cart.cartProducts.length > 0 ?
-
 
                                                         cart.cartProducts.map(product => {
 
@@ -227,8 +248,9 @@ export default function HorizontalNonLinearStepper({ cart }) {
                                                     
 
                                                 </div>
+                                                <h2>Tax: {(cart.cartInfo.totalPrice * .13).toFixed(2)}</h2>
                                                 <h2>Total Price: {cart.cartInfo.totalPrice}</h2>
-                                                    <h2>Tax: {(cart.cartInfo.totalPrice * .13).toFixed(2)}</h2>
+                                                   
                                             </>
 
                                             : null}
@@ -260,7 +282,7 @@ export default function HorizontalNonLinearStepper({ cart }) {
                                     ) : (
                                         <Button onClick={handleComplete}>
                                             {completedSteps() === totalSteps() - 1
-                                                ? 'Finish'
+                                                ? 'Process Order'
                                                 : 'Complete Step'}
                                         </Button>
                                     ))}

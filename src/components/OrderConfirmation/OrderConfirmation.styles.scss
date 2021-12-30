@@ -1,0 +1,43 @@
+.orderConfirmation_container {
+
+    display: flex;
+    width: 100%;
+
+.orderConfirmation_products {
+
+    width:100rem;
+
+    table {
+        border: 1px solid black;
+        width: 90%;
+        height: auto;
+
+        th, td {
+            &:first-child {
+                width: 75%;
+                
+
+            }
+
+            width: 20%;
+           
+        }
+
+        th {
+            height: 30px;
+            text-align: left;
+            border-bottom: 1px dotted black;
+
+          }
+
+          tr {
+              margin: 1px;
+          }
+
+        td {
+            text-align: left;
+        }
+      }
+}
+
+}

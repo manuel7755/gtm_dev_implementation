@@ -23,6 +23,7 @@ import Checkoutpage from './pages/checkout_page/checkout_page.container';
 
 import Utility from "./utility/Utility.component";
 import NavBar from './components/NavBar/Navbar.component';
+import Footer from "./components/Footer/Footer.component";
 import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from './utility/Utility.component';
 
 
@@ -70,6 +71,7 @@ function App() {
                 <Route path="/checkout" component={Checkoutpage} />
                 <Route exact path="/" component={Homepage} />
               </Switch>
+              {/* <Footer/> */}
             </CartContext.Provider>
           </ListingProductsContext.Provider>
         </SearchProductsContext.Provider>
