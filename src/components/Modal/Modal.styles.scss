@@ -1,8 +1,56 @@
-.login_modal_content {
+@import '../../sass/abstracts/mixins';
 
+.login_modal_container{
+    width: 30rem;
+    height: 30rem;
     display: flex;
-    flex-direction: column;
     height: auto;
-    justify-content: space-evenly;
+    flex-direction: column;
 
-}
+
+
+}   
+    .modal_box_override {
+
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translate(-50%, -50%);
+        width: 50rem;
+        height: 35rem;
+        background-color: white;
+        border: 2px solid #000;
+        box-shadow: 24;
+        text-align: center;
+        padding: 1rem;
+
+        @include responsive(phone) {
+            width: 100%;
+      
+    
+          }
+          .login_modal_content {
+            width:100%;
+            height:100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+    
+            & > {
+                width: 100%;
+            }
+    
+        }
+
+    }
+
+
+
+
+
+

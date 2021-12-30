@@ -52,7 +52,7 @@
         & .product_information {
             padding: 0 2rem;
             width: 50%;
-            height: 30rem;
+            height: auto;
             background-color: palegreen;
             display: flex;
             justify-content: center;
@@ -60,7 +60,7 @@
             flex-direction: column;
             @include responsive(phone) {
                 width: 90%;
-                height: auto;
+             
     
     
               }

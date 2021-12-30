@@ -18,7 +18,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 500,
+  width: "100%",
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -29,15 +29,11 @@ const style = {
 
 export function TransitionsModal({ name, login }) {
   const [open, setOpen] = React.useState(false);
-  
+
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
   const { cart, setCart } = useContext(CartContext);
-  const [product , setProduct] = useState({})
-
-
-
-
+  const [product, setProduct] = useState({})
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -46,7 +42,7 @@ export function TransitionsModal({ name, login }) {
     setMethod(e.target.value)
 
   }
-  
+
 
   const handleSubmit = () => {
 
@@ -55,9 +51,9 @@ export function TransitionsModal({ name, login }) {
   }
 
 
-
   return (
-    <div>
+
+    <>
       <Button onClick={handleOpen}>{name}</Button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -71,22 +67,20 @@ export function TransitionsModal({ name, login }) {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
-
+          <Box className="modal_box_override">
             <div className="login_modal_content">
-            <Typography id="transition-modal-title" variant="h3" component="h2">
-              Welcome Back!
-            </Typography>
-              <TextField id="outlined-basic" value="John"  label="name" variant="outlined" />
-              <TextField id="outlined-basic" value={email} onChange={(e) => handleInput(e,setEmail)} label="email" variant="outlined" />
-
-              <TextField id="outlined-basic" value="mor_2314"  label="Username" variant="outlined" />
-              <TextField id="outlined-basic" value="83r5^_"  label="password" variant="outlined" />
+              <Typography id="transition-modal-title" variant="h3" component="h2">
+                Welcome Back!
+              </Typography>
+              <TextField id="outlined-basic" value="John" label="name" variant="outlined" />
+              <TextField id="outlined-basic" value={email} onChange={(e) => handleInput(e, setEmail)} label="email" variant="outlined" />
+              <TextField id="outlined-basic" value="mor_2314" label="Username" variant="outlined" />
+              <TextField id="outlined-basic" value="83r5^_" label="password" variant="outlined" />
               <Button onClick={() => login()}>Login</Button>
             </div>
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

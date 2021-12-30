@@ -134,19 +134,24 @@ const Navbar = (props) => {
 
             {navigationMenuToggle ?
 
-                <div style={{ position: "fixed", textAlign: "center", top: "8rem", width: "100%", height: "auto", background: "black", padding: "1rem" }}>
+                <div className='navbar_links_toggle_container'>
                     <ul>
                         <NavLink link='/contact'>Contact Us</NavLink>
                         <NavLink link='/catalogue'>Catalogue</NavLink>
                         {!login ?
+                        <>
+                            <br/>
                             <button className="login_btn">
                                 <TransitionsModal login={userLogin} name="Login" />
 
                             </button>
+                        </>
 
-                            : <button onClick={() => userLogout()} className="logout_btn">
+                            :  <>
+                               <br/>
+                            <button className="logout_btn" onClick={() => userLogout()} >
                                 Logout
-                            </button>}
+                            </button> </>}
 
                     </ul>
                 </div>

@@ -7,7 +7,6 @@ import "./Spinner.styles.scss";
 
 const Spinner = () => {
 
-
     return (
 
         <div id="cool-loader">
