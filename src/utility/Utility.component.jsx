@@ -58,7 +58,17 @@ export const apiUserLogin = (call) => {
           },
 
     }).then(res=>res.json())
-    .then(json=> call(json))
+    .then(json=> {
+            
+        sessionStorage.setItem("userLogin", JSON.stringify({
+            name: "John",
+            username: "johnd",
+            userId: json.token
+
+        }))
+        call(json)
+    
+    })
 }
 
 export const getQueryParam = (paramName) => {

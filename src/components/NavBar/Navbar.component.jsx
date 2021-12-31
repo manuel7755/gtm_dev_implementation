@@ -98,7 +98,7 @@ const Navbar = (props) => {
 
             console.log("login", response);
 
-            localStorage.setItem("loggedIn", JSON.stringify(response))
+            // localStorage.setItem("loggedIn", JSON.stringify(response))
             setLogin(true)
 
         })
@@ -107,7 +107,7 @@ const Navbar = (props) => {
 
     const userLogout = () => {
 
-        localStorage.removeItem("loggedIn")
+        localStorage.removeItem("userLogin")
         setLogin(false)
     }
 

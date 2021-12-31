@@ -1,43 +1,74 @@
+@import '../../sass/abstracts/mixins';
+
+
 .orderConfirmation_container {
 
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 
 .orderConfirmation_products {
 
-    width:100rem;
+    width:70rem;
+    margin: 0 auto;
+                
+    @include responsive(phone) {
+      width: 100%;
+      margin: 0;
+
+    }
+
+
 
     table {
         border: 1px solid black;
-        width: 90%;
+  
+        width: 100%;
         height: auto;
 
-        th, td {
-            &:first-child {
-                width: 75%;
-                
 
-            }
 
-            width: 20%;
+
+     
+
+        
+        th, tr , td{
+            text-align: center;
+              width: 32rem;
+              // margin: 0 auto;
+
+  
+
+
+
+              &:first-child {
+                text-align: left;
+              }
            
         }
 
         th {
             height: 30px;
-            text-align: left;
+         
+         
             border-bottom: 1px dotted black;
 
           }
 
           tr {
-              margin: 1px;
+              margin: 2px auto;
+              
+            border-bottom: 1px dotted black;
+              
           }
 
         td {
-            text-align: left;
+            text-align: center;
+
         }
       }
 }
+
 
 }

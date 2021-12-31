@@ -11,9 +11,6 @@ import Button from '../../components/Button/Button.component';
 //import { Button } from '@material-ui/core';
 
 
-
-
-
 const Homepage = () => {
 
     return (

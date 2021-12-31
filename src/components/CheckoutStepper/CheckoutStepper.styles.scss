@@ -1,7 +1,15 @@
-.checkoutstep_container {
+@import '../../sass/abstracts/mixins';
 
+
+.checkoutstep_container {
     width: 60%;
-    margin-top: 2rem;
+    margin-top: 4rem;
+
+    @include responsive(phone) {
+        width:80%;
+        
+
+      }
 
 
 

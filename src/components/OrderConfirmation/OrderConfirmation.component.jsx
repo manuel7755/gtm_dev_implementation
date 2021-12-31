@@ -2,7 +2,12 @@ import React from "react";
 import "./OrderConfirmation.styles.scss";
 
 
-const OrderConfirmation = ({ cart, orderId }) => {
+const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCode }) => {
+
+    const subtotal = cart.cartInfo.totalPrice;
+    const tax = (cart.cartInfo.totalPrice *.13).toFixed(2);
+    const total = (+subtotal + +tax).toFixed(2);
+
 
     return (
 
@@ -10,46 +15,63 @@ const OrderConfirmation = ({ cart, orderId }) => {
 
             <div className="orderConfirmation_content">
 
-            </div>
 
-            <div className="orderConfirmation_products">
-            <table>
 
-                <tb>
-                    <th>
-                        Name
+                <div className="orderConfirmation_products">
+                    <table>
 
-                    </th>
-                    <th>
-                        Quantity
+                        <tb>
+                            <th>
+                                Name
 
-                    </th>
-                    <th>
-                        Price
+                            </th>
+                            <th>
+                                Quantity
 
-                    </th>
-                {cart.cartProducts.map(product => {
-                    return(
-                        <tr>
-                        <td>
-                            {product.title}
+                            </th>
+                            <th>
+                                Price
 
-                        </td>
-                        <td>
-                        {product.quantity}
-                        </td>
-                        <td>
-                        $ {product.price}
-                        </td>
-                    </tr>
-                    )
-                })}
-                </tb>
-                </table>
-            </div>
+                            </th>
+                            {cart.cartProducts.map(product => {
+                                return (
+                                    <tr>
+                                        <td>
+                                            {product.title}
 
-            <div className="orderConfirmation_price_details">
+                                        </td>
+                                        <td>
+                                            {product.quantity}
+                                        </td>
+                                        <td>
+                                            $ {product.price}
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tb>
+                    </table>
+                </div>
 
+                <div className="orderConfirmation_user_details">
+                <h2>Name: {orderId}</h2>
+                <h2>Shipping Address : {address}</h2>
+                <h2>City : {city}</h2>
+
+
+                </div>
+                <br/>
+                
+
+
+
+                <div className="orderConfirmation_price_details">
+                    <h2>Order Number : {orderId}</h2>
+                    <h2>Subtotal : {subtotal}</h2>
+                    <h2>Tax: {tax}</h2>
+                    <h2>Total: {total}</h2>
+
+                </div>
             </div>
         </div>
     )

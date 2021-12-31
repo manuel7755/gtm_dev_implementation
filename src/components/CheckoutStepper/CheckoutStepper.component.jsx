@@ -131,11 +131,13 @@ export default function HorizontalNonLinearStepper({ cart }) {
                             </Typography>
                             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                 <Box sx={{ flex: '1 1 auto' }} />
-                       
-
                                 <OrderConfirmation
                                     cart={cart}
                                     orderId={orderNumber}
+                                    address={address}
+                                    creditCard={creditCard}
+                                    postalCode={postalCode}
+                                    city={city}
                                 
                                 />
 
@@ -244,9 +246,6 @@ export default function HorizontalNonLinearStepper({ cart }) {
 
 
                                                         : null}
-
-                                                    
-
                                                 </div>
                                                 <h2>Tax: {(cart.cartInfo.totalPrice * .13).toFixed(2)}</h2>
                                                 <h2>Total Price: {cart.cartInfo.totalPrice}</h2>
