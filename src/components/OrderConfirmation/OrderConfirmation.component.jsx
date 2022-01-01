@@ -54,7 +54,7 @@ const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCod
                 </div>
 
                 <div className="orderConfirmation_user_details">
-                <h2>Name: {orderId}</h2>
+                <h2>Name: John</h2>
                 <h2>Shipping Address : {address}</h2>
                 <h2>City : {city}</h2>
 

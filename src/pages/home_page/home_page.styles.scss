@@ -21,13 +21,11 @@
           padding: 2rem;
           justify-content: space-evenly;
           flex-flow: row wrap;
-          
           align-items: center;
 
            .promotion_slot {
 
             margin: 6rem;
-          
             width: 30rem;
             height: 25rem;
            
@@ -40,6 +38,14 @@
 
           
 
+        }
+
+        .media_video_container{
+          margin-top: 10rem;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          align-items: center;
         }
 
 

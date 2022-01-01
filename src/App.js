@@ -71,7 +71,7 @@ function App() {
                 <Route path="/checkout" component={Checkoutpage} />
                 <Route exact path="/" component={Homepage} />
               </Switch>
-              {/* <Footer/> */}
+              <Footer/>
             </CartContext.Provider>
           </ListingProductsContext.Provider>
         </SearchProductsContext.Provider>

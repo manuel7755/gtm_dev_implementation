@@ -52,6 +52,11 @@ const Homepage = () => {
                         <Button link='/catalogue'>Shop Now</Button>
                     </div>
                 </div>
+
+                <div className="media_video_container">
+                    <h1>Checkout Our New Camera Addition!</h1>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/3bCpnTD3Tt8?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
         </>
     )

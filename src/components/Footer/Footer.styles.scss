@@ -1,7 +1,19 @@
 .footer_container {
+    margin-top: 2rem;
     height: 5rem;
     width: 100%;
     background-color: black;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    align-items: center;
+    color: white;
+
+    a {
+        color: white;
+
+    }
+
 
 
 }
