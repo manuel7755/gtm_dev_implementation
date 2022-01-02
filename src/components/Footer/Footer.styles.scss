@@ -1,18 +1,36 @@
 .footer_container {
     margin-top: 2rem;
-    height: 5rem;
+    height: 2rem;
     width: 100%;
     background-color: black;
-    display: flex;
-    justify-content: space-evenly;
-    flex-flow: row wrap;
+
     align-items: center;
     color: white;
 
-    a {
-        color: white;
+    ul {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-evenly;
+        flex-flow: row wrap;
+        flex-direction: horizontal;
+        list-style-type: none;
 
+        li {
+            margin: 2px;
+
+
+            a {
+                color: white;
+        
+            }
+        
+
+        }
+
+    
     }
+
 
 
 

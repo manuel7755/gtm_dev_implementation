@@ -27,12 +27,6 @@ import Footer from "./components/Footer/Footer.component";
 import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from './utility/Utility.component';
 
 
-// TODO
-
-//2 cart page
-// add to cart slider 
-// when someone clicks the cart icon the same slider appears with all the products
-
 import './App.scss';
 
 function App() {
