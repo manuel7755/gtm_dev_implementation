@@ -63,7 +63,7 @@ function App() {
                 <Route path="/contact" component={Contactpage} />
                 <Route path="/product" component={Productpage} />
                 <Route path="/checkout" component={Checkoutpage} />
-                <Route exact path="/" component={Homepage} />
+                <Route exact path="/gtm_dev_implementation" component={Homepage} />
               </Switch>
               <Footer/>
             </CartContext.Provider>

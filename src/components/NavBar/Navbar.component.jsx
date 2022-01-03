@@ -119,7 +119,7 @@ const Navbar = (props) => {
     return (
         <div className='navbar'>
             <div className='navbar_logo_container'>
-                <a href='/'>
+                <a href='/gtm_dev_implementation'>
                     <ReactAiIcons.AiTwotoneHome />
                 </a>
             </div>
