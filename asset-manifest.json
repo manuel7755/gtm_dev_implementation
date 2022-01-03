@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/gtm_dev_implementation/static/css/main.766c43fb.chunk.css",
+    "main.js": "/gtm_dev_implementation/static/js/main.9cbca455.chunk.js",
+    "main.js.map": "/gtm_dev_implementation/static/js/main.9cbca455.chunk.js.map",
+    "runtime-main.js": "/gtm_dev_implementation/static/js/runtime-main.41b71e19.js",
+    "runtime-main.js.map": "/gtm_dev_implementation/static/js/runtime-main.41b71e19.js.map",
+    "static/js/2.173e3dfd.chunk.js": "/gtm_dev_implementation/static/js/2.173e3dfd.chunk.js",
+    "static/js/2.173e3dfd.chunk.js.map": "/gtm_dev_implementation/static/js/2.173e3dfd.chunk.js.map",
+    "static/js/3.73512e83.chunk.js": "/gtm_dev_implementation/static/js/3.73512e83.chunk.js",
+    "static/js/3.73512e83.chunk.js.map": "/gtm_dev_implementation/static/js/3.73512e83.chunk.js.map",
+    "index.html": "/gtm_dev_implementation/index.html",
+    "static/css/main.766c43fb.chunk.css.map": "/gtm_dev_implementation/static/css/main.766c43fb.chunk.css.map",
+    "static/js/2.173e3dfd.chunk.js.LICENSE.txt": "/gtm_dev_implementation/static/js/2.173e3dfd.chunk.js.LICENSE.txt",
+    "static/media/promotion_athletic_shoes.4897bfea.jpg": "/gtm_dev_implementation/static/media/promotion_athletic_shoes.4897bfea.jpg",
+    "static/media/promotion_backpacks.a3f0fbfd.jpg": "/gtm_dev_implementation/static/media/promotion_backpacks.a3f0fbfd.jpg",
+    "static/media/promotion_couches.f62d58b3.jpg": "/gtm_dev_implementation/static/media/promotion_couches.f62d58b3.jpg",
+    "static/media/promotion_dinner_sets.628ee9be.jpg": "/gtm_dev_implementation/static/media/promotion_dinner_sets.628ee9be.jpg",
+    "static/media/promotion_pans.bd721bc9.jpg": "/gtm_dev_implementation/static/media/promotion_pans.bd721bc9.jpg",
+    "static/media/promotion_vaccums.c689e567.jpg": "/gtm_dev_implementation/static/media/promotion_vaccums.c689e567.jpg",
+    "static/media/promotion_watches.3c35980e.jpg": "/gtm_dev_implementation/static/media/promotion_watches.3c35980e.jpg",
+    "static/media/tamanna-rumee-mIqyYpSNq3o-unsplash_main_banner.8ee615f6.jpg": "/gtm_dev_implementation/static/media/tamanna-rumee-mIqyYpSNq3o-unsplash_main_banner.8ee615f6.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.41b71e19.js",
+    "static/js/2.173e3dfd.chunk.js",
+    "static/css/main.766c43fb.chunk.css",
+    "static/js/main.9cbca455.chunk.js"
+  ]
+}
