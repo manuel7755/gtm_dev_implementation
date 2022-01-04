@@ -1,6 +1,5 @@
 @import '../../sass/abstracts/mixins';
 
-
 .productPage_container {
     background: white;
     width:100%;
@@ -8,7 +7,6 @@
     display: flex;
     align-items: center;
     padding: 2rem;
-
 
     &_product_container {
         display: flex;
@@ -21,28 +19,16 @@
         @include responsive(phone) {
             flex-direction: column;
             justify-content: space-around;
-
-
           }
 
-        
         & .product_image_container {
-
             width:  25%;
             height: 35rem;
-
-            // img {
-            //    width: 100%;
-            //    height: 100%;
-            // }
-            // .product_image {
-
-            //}
 
             @include responsive(phone) {
                 width: 90%;
                 height: 25rem;
-                margin: 4rem 0 2rem 0;
+                margin: 4rem 0 6rem 0;
     
               }
         }
@@ -57,9 +43,6 @@
             flex-direction: column;
             @include responsive(phone) {
                 width: 90%;
-             
-    
-    
               }
      
             & .product_name {
@@ -67,7 +50,6 @@
                 width: 85%;
                 height: auto;
                 margin-bottom: 2rem;
-
             }
 
             & .product_quantity {
@@ -77,13 +59,15 @@
                 display: flex;
                 justify-items: flex-start;
                 align-items: center;
-     
             
+                @include responsive(phone) {
+                    justify-content: space-around;
+                  }
+         
                 .quantity_label {
                     width: 10%;
                     text-align: center;
-                    height: auto;
-            
+                    height: auto;       
                 }
 
                 .quantity_container {
@@ -93,7 +77,6 @@
                     input {
                     width: 6rem;
                     height: 3rem;
-
                     }
 
                     input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
@@ -106,8 +89,6 @@
             & .addTocartButton {
                 width: 70%;
             }
-
         }
-
     }
 }

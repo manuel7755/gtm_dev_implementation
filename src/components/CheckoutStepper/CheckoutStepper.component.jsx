@@ -1,17 +1,5 @@
 import * as React from 'react';
-
 import "./CheckoutStepper.styles.scss";
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepButton from '@mui/material/StepButton';
-import Typography from '@mui/material/Typography';
-
-import Product from "../Product/Product.component";
-import OrderConfirmation from "../OrderConfirmation/OrderConfirmation.component";
-import { generateRandomOrderNumber } from "../../utility/Utility.component";
-
-
 import {
     Select,
     MenuItem,
@@ -26,12 +14,20 @@ import {
 
 } from '@mui/material';
 
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepButton from '@mui/material/StepButton';
+import Typography from '@mui/material/Typography';
 
-import ContactForm from "../../components/ContactForm/ContactForm.component"
+import Product from "../Product/Product.component";
+import OrderConfirmation from "../OrderConfirmation/OrderConfirmation.component";
+import { generateRandomOrderNumber } from "../../utility/Utility.component";
+
+
 const steps = ['Billing', 'Payment', 'Order Confirmation'];
 
 export default function HorizontalNonLinearStepper({ cart }) {
-
 
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState({});
@@ -43,11 +39,6 @@ export default function HorizontalNonLinearStepper({ cart }) {
     const [coupon, setCoupon] = React.useState(0);
     const [city, setCity] = React.useState("");
     const [orderNumber, setOrderNumber] = React.useState("");
-
-
-
-
-
 
     const totalSteps = () => {
         return steps.length;
@@ -68,8 +59,7 @@ export default function HorizontalNonLinearStepper({ cart }) {
     const handleNext = () => {
         const newActiveStep =
             isLastStep() && !allStepsCompleted()
-                ? // It's the last step, but not all steps have been completed,
-                // find the first step that has been completed
+                ?
                 steps.findIndex((step, i) => !(i in completed))
                 : activeStep + 1;
         setActiveStep(newActiveStep);
@@ -100,16 +90,12 @@ export default function HorizontalNonLinearStepper({ cart }) {
 
     const handleInputChange = (e, setAction) => {
 
-        console.log("value", e.target.value)
-
         setAction(e.target.value)
     }
 
     const generateOrderNumber = () => {
 
-
         setOrderNumber(generateRandomOrderNumber())
-
     }
     return (
         <div className="checkoutstep_container">
@@ -140,91 +126,61 @@ export default function HorizontalNonLinearStepper({ cart }) {
                                     city={city}
                                 
                                 />
-
-
                                 {/* <Button onClick={handleReset}>Reset</Button> */}
                             </Box>
                         </React.Fragment>
                     ) : (
                         <React.Fragment>
                             <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
-
-                            {/* <div style={{ width: "100%", height: "auto", minHeight: "20rem" }}> */}
-
                                 {activeStep + 1 === 1 ?
-
                                     <FormControl style={{ width: "100%" }}>
-
                                         <inputLabel component="legend">Billing Address</inputLabel>
                                         <TextField fullWidth={true}
-
                                             value={address}
                                             onChange={(e) => handleInputChange(e, setAddress)}
 
                                         />
                                         <inputLabel component="legend">City</inputLabel>
-
                                         <TextField fullWidth={true}
                                             value={city}
                                             onChange={(e) => handleInputChange(e, setCity)}
-
                                         />
                                         <inputLabel component="legend">Postal Code</inputLabel>
                                         <TextField fullWidth={true}
-
                                             value={postalCode}
                                             onChange={(e) => handleInputChange(e, setPostalCode)}
-
-
-
                                         />
                                     </FormControl>
-
                                     :
-
-
                                     activeStep + 1 === 2 ?
-
                                         <FormControl style={{ width: "100%" }}>
-
                                             <inputLabel
                                                 component="legend"
-
-
                                             >Credit Card</inputLabel>
                                             <TextField
                                                 name="creditCard"
                                                 value={creditCard}
                                                 onChange={(e) => handleInputChange(e, setCreditCard)}
-
                                                 fullWidth={true} />
-
-
                                             <inputLabel component="legend">Expiry</inputLabel>
 
                                             <TextField 
                                             fullWidth={true} 
                                             value={creditCardExpiryDate}
                                             onChange={(e) => handleInputChange(e, setCreditCardExpiryDate)}
-                                        
-                                            
                                             />
                                             <inputLabel component="legend">Code</inputLabel>
                                             <TextField
                                              fullWidth={true} 
                                              value={creditCardCode}
                                              onChange={(e) => handleInputChange(e, setCreditCardCode)}
-                                             
-        
                                              />
 
                                             <inputLabel component="legend">Coupon</inputLabel>
-                                            <TextField     
+                                            <TextField    
                                             fullWidth={true}
                                             value={coupon}
                                             onChange={(e) => handleInputChange(e, setCoupon)} 
-                                        
-                                        
                                         />
                                         </FormControl>
 

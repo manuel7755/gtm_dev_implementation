@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './home_page.styles.scss';
-import Banner from '../../components/Banner/Banner.component';
+
 import HeroBanner from '../../assets/images/tamanna-rumee-mIqyYpSNq3o-unsplash_main_banner.jpg'
 import PromoShoes from '../../assets/images/promotion_athletic_shoes.jpg'
 import PromoBackpacks from '../../assets/images/promotion_backpacks.jpg'
 import PromoVaccums from '../../assets/images/promotion_vaccums.jpg'
 import PromoPans from '../../assets/images/promotion_pans.jpg'
 import PromoWatches from '../../assets/images/promotion_watches.jpg'
-
-
-
 import PromoCouches from '../../assets/images/promotion_couches.jpg'
 import PromoDinnerSets from '../../assets/images/promotion_dinner_sets.jpg'
 
 import Button from '../../components/Button/Button.component';
-//import { Button } from '@material-ui/core';
+import Banner from '../../components/Banner/Banner.component';
 
 
 const Homepage = () => {

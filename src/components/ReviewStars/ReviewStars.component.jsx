@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 
-export default function BasicRating({rate}) {
+export default function BasicRating({ rate }) {
   const [value, setValue] = React.useState(2);
 
   return (
@@ -12,7 +12,6 @@ export default function BasicRating({rate}) {
         '& > legend': { mt: 2 },
       }}
     >
-     
       <Rating name="read-only" value={rate} readOnly />
     </Box>
   );

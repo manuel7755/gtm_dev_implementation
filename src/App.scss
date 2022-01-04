@@ -2,13 +2,10 @@
 *, 
 *::after,
 *::before {
-
+  
   padding:0;
   box-sizing:inherit;
-
-
 }
-
 
 html {
   scroll-behavior:smooth;
@@ -36,12 +33,9 @@ html {
   font-size: 75%; 
 }
 
-
-
 body {
   box-sizing: border-box;
 
-  
      @include responsive(tab-port) {
       padding: 0;
   }
@@ -53,30 +47,25 @@ body {
     min-height: 100vh;
   
   }
-
 }
 
 a {
   text-decoration: none;
 }
 
-
 img {
   height : 100%;
   width: 100%;  
  }
     
-
  svg {
   height:100%;
   width: 4rem;
   fill :black;
-
 }
 
 p {
   font-size : 1.8rem;
-  
   &:not(:last-child){
       margin-bottom: 2rem;
   }
