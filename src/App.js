@@ -31,7 +31,7 @@ import './App.scss';
 
 // ******Module [GTM React Container Setup]*******
 
-// step 1 set the install react-gtm-module modules explain how it was originally done
+// step 1 Install react-gtm-module modules explain how it was originally done
 // and how it is being done currently
 
 // step 2 create this tag manager args
@@ -51,9 +51,6 @@ const TagManagerArgs = {
 }
 
 TagManager.initialize(TagManagerArgs)
-
-// pass events
-
 
 
 function App() {
