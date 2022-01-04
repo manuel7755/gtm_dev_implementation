@@ -25,11 +25,40 @@ import Utility from "./utility/Utility.component";
 import NavBar from './components/NavBar/Navbar.component';
 import Footer from "./components/Footer/Footer.component";
 import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from './utility/Utility.component';
-
+import TagManager from "react-gtm-module";
 
 import './App.scss';
 
+// ******Module [GTM React Container Setup]*******
+
+// step 1 set the install react-gtm-module modules explain how it was originally done
+// and how it is being done currently
+
+// step 2 create this tag manager args
+
+// step 3 initialize it
+const TagManagerArgs = {
+  gtmId: "GTM-N5JL87F",
+  dataLayer:{
+    event: "pageview",
+    page:{
+      path:"/homepage",
+      title:"gtm_dev_implementation"
+    }
+
+  }
+
+}
+
+TagManager.initialize(TagManagerArgs)
+
+// pass events
+
+
+
 function App() {
+  
+
 
   const [cart, setCart] = useState({});
   const [listingProducts, setListingProducts] = useState([]);

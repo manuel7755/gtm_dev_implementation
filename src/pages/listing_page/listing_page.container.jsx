@@ -11,7 +11,7 @@ import { ListingProductsContext } from '../../Contexts/ListingProducts';
 
 import Spinner from "../../components/Spinner/Spinner.component";
 
-
+import TagManager from 'react-gtm-module'
 
 
 // add cart method, enable context to have the set cart method
@@ -23,6 +23,7 @@ const ListingPage = () => {
     const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
 
     useEffect(() => {
+
 
         if (listingProducts && !listingProducts.length) {
 

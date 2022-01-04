@@ -42,8 +42,12 @@
             @include responsive(phone) {
                 width: 90%;
                 height: 25rem;
-                margin: 4rem 0 2rem 0;
+                margin: 4rem 0 6rem 0;
     
+              }
+
+            & .product_reviews {
+                  margin-bottom: 2rem;
               }
         }
 
