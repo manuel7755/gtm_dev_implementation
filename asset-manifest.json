@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/gtm_dev_implementation/static/css/main.766c43fb.chunk.css",
-    "main.js": "/gtm_dev_implementation/static/js/main.f90516b0.chunk.js",
-    "main.js.map": "/gtm_dev_implementation/static/js/main.f90516b0.chunk.js.map",
+    "main.css": "/gtm_dev_implementation/static/css/main.f54f6dfa.chunk.css",
+    "main.js": "/gtm_dev_implementation/static/js/main.c0ca0a5d.chunk.js",
+    "main.js.map": "/gtm_dev_implementation/static/js/main.c0ca0a5d.chunk.js.map",
     "runtime-main.js": "/gtm_dev_implementation/static/js/runtime-main.41b71e19.js",
     "runtime-main.js.map": "/gtm_dev_implementation/static/js/runtime-main.41b71e19.js.map",
-    "static/js/2.173e3dfd.chunk.js": "/gtm_dev_implementation/static/js/2.173e3dfd.chunk.js",
-    "static/js/2.173e3dfd.chunk.js.map": "/gtm_dev_implementation/static/js/2.173e3dfd.chunk.js.map",
+    "static/js/2.bb45ebe6.chunk.js": "/gtm_dev_implementation/static/js/2.bb45ebe6.chunk.js",
+    "static/js/2.bb45ebe6.chunk.js.map": "/gtm_dev_implementation/static/js/2.bb45ebe6.chunk.js.map",
     "static/js/3.73512e83.chunk.js": "/gtm_dev_implementation/static/js/3.73512e83.chunk.js",
     "static/js/3.73512e83.chunk.js.map": "/gtm_dev_implementation/static/js/3.73512e83.chunk.js.map",
     "index.html": "/gtm_dev_implementation/index.html",
-    "static/css/main.766c43fb.chunk.css.map": "/gtm_dev_implementation/static/css/main.766c43fb.chunk.css.map",
-    "static/js/2.173e3dfd.chunk.js.LICENSE.txt": "/gtm_dev_implementation/static/js/2.173e3dfd.chunk.js.LICENSE.txt",
+    "static/css/main.f54f6dfa.chunk.css.map": "/gtm_dev_implementation/static/css/main.f54f6dfa.chunk.css.map",
+    "static/js/2.bb45ebe6.chunk.js.LICENSE.txt": "/gtm_dev_implementation/static/js/2.bb45ebe6.chunk.js.LICENSE.txt",
     "static/media/promotion_athletic_shoes.4897bfea.jpg": "/gtm_dev_implementation/static/media/promotion_athletic_shoes.4897bfea.jpg",
     "static/media/promotion_backpacks.a3f0fbfd.jpg": "/gtm_dev_implementation/static/media/promotion_backpacks.a3f0fbfd.jpg",
     "static/media/promotion_couches.f62d58b3.jpg": "/gtm_dev_implementation/static/media/promotion_couches.f62d58b3.jpg",
@@ -23,8 +23,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.41b71e19.js",
-    "static/js/2.173e3dfd.chunk.js",
-    "static/css/main.766c43fb.chunk.css",
-    "static/js/main.f90516b0.chunk.js"
+    "static/js/2.bb45ebe6.chunk.js",
+    "static/css/main.f54f6dfa.chunk.css",
+    "static/js/main.c0ca0a5d.chunk.js"
   ]
 }
