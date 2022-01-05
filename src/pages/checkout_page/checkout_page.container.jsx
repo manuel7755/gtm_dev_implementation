@@ -24,9 +24,16 @@ const CheckoutPage = () => {
     
     const { cart, setCart } = useContext(CartContext);
 
+    const checkoutStepListener = (activeStep) => {
+
+        const checkoutStepName =  activeStep === 0 ? "billing" : activeStep === 1 ? "payment" : activeStep === 2 ? "confirmation" : "";
+        
+    }   
+    
+
     return (
         <div className="page_section checkout_page_container">
-            <CheckoutStepper cart={cart} />
+            <CheckoutStepper checkoutStepListener={checkoutStepListener} cart={cart} />
         </div>
     )
 }
