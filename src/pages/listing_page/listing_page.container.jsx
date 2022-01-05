@@ -10,6 +10,8 @@ import { ListingProductsContext } from '../../Contexts/ListingProducts';
 
 import Spinner from "../../components/Spinner/Spinner.component";
 
+import TagManager from "react-gtm-module";
+
 const ListingPage = () => {
 
     const { listingProducts, setListingProducts } = useContext(ListingProductsContext);
@@ -18,12 +20,26 @@ const ListingPage = () => {
 
     useEffect(() => {
 
+ 
 
         if (listingProducts && !listingProducts.length) {
 
             apiCallProducts((products) => {
 
                 setListingProducts([...products])
+
+                TagManager.dataLayer({
+                    dataLayer: {
+                        event: "pageview",
+                        page: {
+                            path:"/catalogue",
+                            pageType: "listingPage"
+                        },  
+        
+                        products: [...products]
+                    }
+                })
+        
 
                 sessionStorage.setItem('listingProducts', JSON.stringify(products))
 

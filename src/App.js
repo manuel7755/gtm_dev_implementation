@@ -27,14 +27,7 @@ import TagManager from "react-gtm-module";
 
 import './App.scss';
 
-// ******Module [GTM React Container Setup]*******
 
-// step 1 Install react-gtm-module modules explain how it was originally done
-// and how it is being done currently
-
-// step 2 create this tag manager args
-
-// step 3 initialize it
 const TagManagerArgs = {
   gtmId: "GTM-N5JL87F",
   dataLayer:{
