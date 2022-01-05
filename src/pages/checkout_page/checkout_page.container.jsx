@@ -26,12 +26,6 @@ const CheckoutPage = () => {
     const { cart, setCart } = useContext(CartContext);
 
 
-    // useEffect(() => {
-
-  
-    // },[])
-
-
     const checkoutStepListener = (activeStep) => {
 
     const checkoutStepName =  activeStep === 0 ? "billing" : activeStep === 1 ? "payment" : activeStep === 2 ? "confirmation" : "";
