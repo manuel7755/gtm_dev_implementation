@@ -40,7 +40,6 @@ const ListingPage = () => {
                     }
                 })
         
-
                 sessionStorage.setItem('listingProducts', JSON.stringify(products))
 
             });

@@ -7,6 +7,7 @@ import { ListingProductsContext } from '../../Contexts/ListingProducts';
 
 import CartSliderProduct from "../CartSliderProduct/CartSliderProduct.component";
 import Button from "../Button/Button.component";
+import TagManager from "react-gtm-module";
 
 
 const CartSlider = ({ activeStatus }) => {
@@ -15,6 +16,21 @@ const CartSlider = ({ activeStatus }) => {
     const { products, setProducts } = useContext(ListingProductsContext);
 
     useEffect(() => {
+
+        if (activeStatus) {
+
+            TagManager.dataLayer({
+                dataLayer: {
+                    event: "pageview",
+                    page: {
+                        path: "/cart",
+                        pageType: "cartPage"
+                    },
+                    products: [...cart.cartProducts]
+                }
+            })
+        }
+
 
     }, [activeStatus])
 

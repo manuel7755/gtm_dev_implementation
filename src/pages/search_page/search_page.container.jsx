@@ -26,8 +26,6 @@ const SearchPage = function (props) {
         const { history } = props;
         const searchTerm = history.location.state.searchKeyword;
 
-        console.log("history ", history)
-
         
         TagManager.dataLayer({
             dataLayer: {
@@ -36,7 +34,6 @@ const SearchPage = function (props) {
                     path:"search_results?q=" + searchTerm,
                     pageType: "searchPage"
                 },  
-
                 products: [...searchProducts]
             }
         })
