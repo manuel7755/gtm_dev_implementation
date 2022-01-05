@@ -7,4 +7,4 @@
 
 (2) ******Module [dataLayer]*******
 
-// step 1 setup dataLayer events with the new enable methods
+// step 1 setup dataLayer pageview events to all pages
