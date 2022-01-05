@@ -1,3 +1,4 @@
+import React, { useContext, useEffect } from 'react';
 import "./checkout_page.styles.scss";
 import {
     Select,
@@ -16,17 +17,41 @@ import {
 
 import { CartContext } from '../../Contexts/Cart';
 import CheckoutStepper from "../../components/CheckoutStepper/CheckoutStepper.component"
-import React, { useContext } from 'react';
 
+import TagManager from "react-gtm-module";
 
 
 const CheckoutPage = () => {
     
     const { cart, setCart } = useContext(CartContext);
 
+
+    // useEffect(() => {
+
+  
+    // },[])
+
+
+    const checkoutStepListener = (activeStep) => {
+
+    const checkoutStepName =  activeStep === 0 ? "billing" : activeStep === 1 ? "payment" : activeStep === 2 ? "confirmation" : "";
+    
+
+        TagManager.dataLayer({
+            dataLayer: {
+                event: "pageview",
+                page: {
+                    path:"/checkout_" + checkoutStepName,
+                    pageType: "checkout"
+                },  
+            }
+        })
+
+    }
+
     return (
         <div className="page_section checkout_page_container">
-            <CheckoutStepper cart={cart} />
+            <CheckoutStepper checkoutStepListener={checkoutStepListener} cart={cart} />
         </div>
     )
 }
