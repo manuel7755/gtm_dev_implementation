@@ -8,7 +8,7 @@ import * as ReactBsIcons from 'react-icons/bs';
 const CartSliderProduct = ({ image, title, price, quantity, id, removeProduct, updateQuantity }) => {
 
     return (
-        <div className="cartSliderProduct_container">
+        <div key={id} className="cartSliderProduct_container">
             <div className="cartSliderProduct_content">
                 <div className="cartSliderProduct_image">
                     <img src={image} alt="" />

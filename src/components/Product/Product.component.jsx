@@ -15,7 +15,7 @@ import ReviewStars from "../ReviewStars/ReviewStars.component";
 const Product = ({ id, image, title, description, price, addToCart, quantity, ommit, rating: { rate } }) => {
     return (
 
-        <div className="product_container">
+        <div key={id} className="product_container">
             <div className="product_content">
                 <div className="product_image">
                     <Link to={`/product?pCode=${id}`}>
