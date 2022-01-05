@@ -10,7 +10,7 @@ import Spinner from "../../components/Spinner/Spinner.component";
 import Product from '../../components/Product/Product.component';
 
 
-const SearchPage = function () {
+const SearchPage = function (props) {
 
     const { searchProducts, setSearchProducts } = useContext(SearchProductsContext)
     const { cart, setCart } = useContext(CartContext);
