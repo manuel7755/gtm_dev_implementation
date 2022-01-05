@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { addToCart } from "../../utility/Utility.component"
+import { withRouter } from 'react-router'; 
 
 import { CartContext } from '../../Contexts/Cart';
 import { SearchProductsContext } from '../../Contexts/SearchProducts';
@@ -9,13 +10,17 @@ import Spinner from "../../components/Spinner/Spinner.component";
 import Product from '../../components/Product/Product.component';
 
 
-const SearchPage = function () {
+const SearchPage = function (props) {
 
     const { searchProducts, setSearchProducts } = useContext(SearchProductsContext)
     const { cart, setCart } = useContext(CartContext);
     const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
 
     useEffect(() => {
+
+        const { history } = props;
+        const searchTerm = history.location.state.searchKeyword;
+
 
         setSearchProducts(searchProducts)
     }, [searchProducts]);
@@ -58,4 +63,4 @@ const SearchPage = function () {
     )
 }
 
-export default SearchPage;
+export default withRouter(SearchPage);
