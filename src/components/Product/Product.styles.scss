@@ -1,5 +1,4 @@
 .product_container {
-
     width: 30rem;
     height: auto;
     margin: 2rem 3rem;
@@ -18,17 +17,14 @@
         flex-direction: column;
         justify-content: space-evenly;
 
-    
     & .product_image {
         height: 20rem;
         width: 20rem;
-        
         margin: 0 auto;
         }
-    
     & .product_description{
         height: 20rem;
         overflow-y: scroll;
-     }
+         }
     }
 }

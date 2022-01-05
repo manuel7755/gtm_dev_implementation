@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
+import './Navbar.styles.scss';
+
 import { withRouter } from 'react-router-dom';
 
 import { CartContext } from '../../Contexts/Cart';
@@ -6,32 +8,20 @@ import { LoginContext } from '../../Contexts/Login';
 import { SearchProductsContext } from '../../Contexts/SearchProducts';
 import { LoadingSpinnerContext } from '../../Contexts/LoadingSpinner';
 
-
-
-
-import './Navbar.styles.scss';
-
 import NavLink from '../NavLinks/NavLinks.component';
 import HomeLogo from '../Logo/Logo.component';
+import CartSlider from "../CartSlider/CartSlider.component";
+import { TransitionsModal } from '../../components/Modal/Modal.component';
+
 import * as ReactAiIcons from 'react-icons/ai';
 import * as ReactGiIcons from 'react-icons/gi';
 import * as ReactBsIcons from 'react-icons/bs';
-
 
 import { BrowserView, MobileView } from 'react-device-detect'; // uninstall
 import { apiCallProducts, apiUserLogin } from '../../utility/Utility.component';
 import { useCheckMobileScreen } from '../../utility/Utility.component';
 
-import CartSlider from "../CartSlider/CartSlider.component";
-
-import { TransitionsModal } from '../../components/Modal/Modal.component';
-
-
-
-
 const Navbar = (props) => {
-    // const [inputValue, setInputValue] = useState(0);
-    // const [pressedEnter,setPressedEnter] = useState(false)
 
     const isMobile = useCheckMobileScreen();
     const [navigationMenuToggle, setNavigationMenuToggle] = useState(false);
@@ -39,7 +29,6 @@ const Navbar = (props) => {
     const { login, setLogin } = useContext(LoginContext);
     const { searchProducts, setSearchProducts } = useContext(SearchProductsContext);
     const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
-
     const [cartSlider, setCartSlider] = useState(false);
 
 
@@ -51,15 +40,11 @@ const Navbar = (props) => {
 
         if (e.key === 'Enter') {
 
-            console.log("hitting")
-
             setLoadingSpinner(true)
 
             const searchTerm = e.target.value;
 
-
             apiCallProducts((products) => {
-
 
                 const sortedProducts = products.filter(product => {
 
@@ -71,13 +56,10 @@ const Navbar = (props) => {
                     }
                 })
 
-
                 setSearchProducts(sortedProducts)
 
-             setLoadingSpinner(false)
+                setLoadingSpinner(false)
 
-
-        
             });
 
             props.history.push({
@@ -86,9 +68,7 @@ const Navbar = (props) => {
                 state: { searchKeyword: searchTerm }
 
             })
-
         }
-
     }
 
 
@@ -96,9 +76,6 @@ const Navbar = (props) => {
 
         apiUserLogin((response) => {
 
-            console.log("login", response);
-
-            // localStorage.setItem("loggedIn", JSON.stringify(response))
             setLogin(true)
 
         })
@@ -109,11 +86,6 @@ const Navbar = (props) => {
 
         localStorage.removeItem("userLogin")
         setLogin(false)
-    }
-
-
-    const activateCartSlider = () => {
-
     }
 
     return (
@@ -131,67 +103,53 @@ const Navbar = (props) => {
                     onKeyDown={inputListener}
                 />
             </div>
-
             {navigationMenuToggle ?
-
                 <div className='navbar_links_toggle_container'>
                     <ul>
                         <NavLink link='/contact'>Contact Us</NavLink>
                         <NavLink link='/catalogue'>Catalogue</NavLink>
                         {!login ?
-                        <>
-                            <br/>
-                            <button className="login_btn">
-                                <TransitionsModal login={userLogin} name="Login" />
+                            <>
+                                <br />
+                                <button className="login_btn">
+                                    <TransitionsModal login={userLogin} name="Login" />
 
-                            </button>
-                        </>
+                                </button>
+                            </>
 
-                            :  <>
-                               <br/>
-                            <button className="logout_btn" onClick={() => userLogout()} >
-                                Logout
-                            </button> </>}
-
+                            : <>
+                                <br />
+                                <button className="logout_btn" onClick={() => userLogout()} >
+                                    Logout
+                                </button> </>}
                     </ul>
                 </div>
 
                 : null}
             <div className='navbar_links_container'>
                 <ul>
-
                     {!isMobile ?
-
                         <>
-
                             <NavLink link='/contact'>Contact Us</NavLink>
                             <NavLink link='/catalogue'>Catalogue</NavLink>
                             {!login ?
                                 <button className="login_btn">
                                     <TransitionsModal login={userLogin} name="Login" />
-
                                 </button>
-
                                 : <button onClick={() => userLogout()} className="logout_btn">
                                     Logout
                                 </button>}
-
-
                         </>
-
                         : <ReactGiIcons.GiHamburgerMenu onClick={() => setNavigationMenuToggle(!navigationMenuToggle)} />
-
                     }
                 </ul>
             </div>
-            {/* <NavLink link='/cart'> */}
             <ReactBsIcons.BsFillCartPlusFill onClick={() => setCartSlider(!cartSlider)} />
             <div className="cart_quantity">
                 <h5>{cart.cartInfo && cart.cartInfo.totalItems || 0}</h5>
             </div>
             <CartSlider activeStatus={cartSlider} />
         </div>
-
     )
 }
 

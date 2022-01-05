@@ -1,4 +1,8 @@
 import React, { Component, useState, useContext, useEffect } from 'react';
+import "./Modal.styles.scss";
+
+import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
+
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -6,11 +10,10 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-
-import "./Modal.styles.scss";
 import { autocompleteClasses } from '@mui/material';
+
 import { CartContext } from '../../Contexts/Cart';
-import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
+
 
 
 const style = {
@@ -28,8 +31,8 @@ const style = {
 };
 
 export function TransitionsModal({ name, login }) {
-  const [open, setOpen] = React.useState(false);
 
+  const [open, setOpen] = React.useState(false);
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
   const { cart, setCart } = useContext(CartContext);
@@ -39,20 +42,11 @@ export function TransitionsModal({ name, login }) {
 
 
   const handleInput = (e, setMethod) => {
+
     setMethod(e.target.value)
-
   }
-
-
-  const handleSubmit = () => {
-
-
-
-  }
-
 
   return (
-
     <>
       <Button onClick={handleOpen}>{name}</Button>
       <Modal

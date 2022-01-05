@@ -8,67 +8,40 @@
     align-items: center;
     width: 100%;
 
-.orderConfirmation_products {
+  .orderConfirmation_products {
 
-    width:70rem;
-    margin: 0 auto;
+      width:70rem;
+      margin: 0 auto;
                 
-    @include responsive(phone) {
-      width: 100%;
-      margin: 0;
-
-    }
-
-
-
+      @include responsive(phone) {
+        width: 100%;
+        margin: 0;
+        }
     table {
         border: 1px solid black;
-  
         width: 100%;
         height: auto;
 
-
-
-
-     
-
-        
         th, tr , td{
             text-align: center;
               width: 32rem;
-              // margin: 0 auto;
-
-  
-
-
 
               &:first-child {
                 text-align: left;
               }
-           
         }
-
         th {
             height: 30px;
-         
-         
             border-bottom: 1px dotted black;
-
           }
-
           tr {
-              margin: 2px auto;
-              
+            margin: 2px auto;
             border-bottom: 1px dotted black;
-              
           }
 
         td {
             text-align: center;
-
         }
       }
-}
-
-
+  }
 }

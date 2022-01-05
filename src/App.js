@@ -3,7 +3,6 @@ import {
   Switch,
   Route,
   withRouter,
-  Link
 } from 'react-router-dom';
 
 import React, { useState, useEffect } from 'react';
@@ -12,7 +11,6 @@ import { ListingProductsContext } from "./Contexts/ListingProducts";
 import { SearchProductsContext } from "./Contexts/SearchProducts";
 import { LoginContext } from "./Contexts/Login"
 import { LoadingSpinnerContext } from "./Contexts/LoadingSpinner"
-
 
 import Homepage from './pages/home_page/home_page.container';
 import Searchpage from './pages/search_page/search_page.container';
@@ -63,9 +61,6 @@ function App() {
   const [login, setLogin] = useState(false);
   const [loadingSpinner, setLoadingSpinner] = useState(false);
 
-
-
-  // app initialization function
 
   useEffect(() => {
 

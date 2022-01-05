@@ -5,11 +5,9 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    withRouter, 
+    withRouter,
     Link
-  } from 'react-router-dom';
-
-
+} from 'react-router-dom';
 
 
 const Button = (props) => (
@@ -20,8 +18,5 @@ const Button = (props) => (
         </button>
     </Link>
 )
-
-
-
 
 export default Button;

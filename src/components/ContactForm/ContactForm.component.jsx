@@ -1,6 +1,5 @@
-import "./ContactForm.styles.scss";
-
 import * as React from 'react';
+import "./ContactForm.styles.scss";
 
 import {
     Select,
@@ -24,19 +23,13 @@ const ContactForm = () => {
     const [value, setValue] = React.useState('');
 
     const handleChange = (event, set) => {
-      set(event.target.value);
+        set(event.target.value);
     };
 
     const handleSubmit = (e) => {
 
-        console.log("submit")
         e.preventDefault();
-
-
     }
-
-
-
     return (
         <div className="contactForm_container">
             <h1>Contact Us</h1>
@@ -44,38 +37,31 @@ const ContactForm = () => {
                 <TextField id="filled-basic" label="name" variant="filled" />
                 <TextField id="filled-basic" label="email" variant="filled" />
                 <br />
-
                 <Box sx={{ minWidth: 120 }}>
-
                     <FormControl fullWidth>
-
                         <InputLabel id="demo-simple-select-label">Subject</InputLabel>
-
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={age}
                             label="Age"
-                            onChange={(e) => handleChange(e,setAge)}
+                            onChange={(e) => handleChange(e, setAge)}
                         >
                             <MenuItem value={10}>Ten</MenuItem>
                             <MenuItem value={20}>Twenty</MenuItem>
                             <MenuItem value={30}>Thirty</MenuItem>
                         </Select>
                     </FormControl>
-
                 </Box>
-
                 <TextField
                     id="filled-multiline-flexible"
                     label="Message"
                     multiline
                     maxRows={4}
                     value={value}
-                    onChange={(e) => handleChange(e,setValue)}
+                    onChange={(e) => handleChange(e, setValue)}
                     variant="filled"
                 />
-
                 <div style={{ width: "35%", marginTop: "2rem" }}>
                     <FormLabel component="legend">Department</FormLabel>
                     <RadioGroup
@@ -93,7 +79,5 @@ const ContactForm = () => {
         </div>
     )
 }
-
-
 
 export default ContactForm;
