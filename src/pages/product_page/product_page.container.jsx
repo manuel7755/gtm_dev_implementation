@@ -1,7 +1,7 @@
-import React, { Component, useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './product_page.styles.scss';
 
-import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
+import { apiGetProduct, getQueryParam, addToCart } from '../../utility/Utility.component';
 import { Alert } from '@material-ui/lab';
 import { CartContext } from '../../Contexts/Cart';
 import ReviewStars from "../../components/ReviewStars/ReviewStars.component";
@@ -56,38 +56,30 @@ const ProductPage = () => {
 
 
     return (
-
         <div className='page_section productPage_container'>
             <div className='productPage_container_product_container'>
                 <div className='product_image_container'>
                     <img src={product.image} alt='' className='product_image' />
                     <div className='product_reviews'>
-
                         <h3>
-                           <ReviewStars rate={product && product.rating && product.rating.rate ? product.rating.rate : null}/>
+                            <ReviewStars rate={product && product.rating && product.rating.rate ? product.rating.rate : null} />
 
                         </h3>
-
                         <h3>
                             Count: {product && product.rating && product.rating.count ? product.rating.count : null}
                         </h3>
-
                     </div>
-
                 </div>
-
                 <div className='product_information'>
                     <div className='product_name'>
 
                         <h1> {product.title} </h1>
 
                     </div>
-
                     <div className="product_description">
                         <p> {product.description}</p>
 
                     </div>
-
                     <div className='product_quantity'>
                         <div className="quantity_label">
                             <h2>QTY</h2>
@@ -97,23 +89,17 @@ const ProductPage = () => {
                         <div className="quantity_container">
                             <input onChange={(e) => updateProductQuantity(e)} type='number' defaultValue='1' name='quantity' min='1' />
                         </div>
-
-
                     </div>
-
                     <div className='addTocartButton'>
 
                         <Button link={window.location.pathname + window.location.search} clickAction={() => nativeAddToCart()}>Add To Cart</Button>
 
                     </div>
                     <br />
-
                     {successAddToCart ?
-
                         <Alert variant="filled" severity="success">
                             Success You Have Added To Cart!
                         </Alert>
-
                         : null}
                 </div>
             </div>

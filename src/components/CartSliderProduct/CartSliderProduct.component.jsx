@@ -1,14 +1,14 @@
 import React from "react";
 import "./CartSliderProduct.styles.scss";
 
-import * as ReactAiIcons from 'react-icons/ai';
-import * as ReactGiIcons from 'react-icons/gi';
+// import * as ReactAiIcons from 'react-icons/ai';
+// import * as ReactGiIcons from 'react-icons/gi';
 import * as ReactBsIcons from 'react-icons/bs';
 
 const CartSliderProduct = ({ image, title, price, quantity, id, removeProduct, updateQuantity }) => {
 
     return (
-        <div key={id} className="cartSliderProduct_container">
+        <div className="cartSliderProduct_container">
             <div className="cartSliderProduct_content">
                 <div className="cartSliderProduct_image">
                     <img src={image} alt="" />

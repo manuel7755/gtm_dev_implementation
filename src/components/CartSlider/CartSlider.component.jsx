@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import "./CartSlider.styles.scss";
-import { apiGetProduct, getQueryParam, addToCart, getCartInfo, removeProduct, updateProductQuantity } from '../../utility/Utility.component';
+import { removeProduct, updateProductQuantity } from '../../utility/Utility.component';
 
 import { CartContext } from '../../Contexts/Cart';
-import { ListingProductsContext } from '../../Contexts/ListingProducts';
 
 import CartSliderProduct from "../CartSliderProduct/CartSliderProduct.component";
 import Button from "../Button/Button.component";
@@ -12,7 +11,6 @@ import Button from "../Button/Button.component";
 const CartSlider = ({ activeStatus }) => {
 
     const { cart, setCart } = useContext(CartContext);
-    const { products, setProducts } = useContext(ListingProductsContext);
 
     useEffect(() => {
 
@@ -41,6 +39,7 @@ const CartSlider = ({ activeStatus }) => {
             <div className="addToCartSlider_content">
                 {cart.cartProducts && cart.cartProducts.length > 0 ? cart.cartProducts.map(product => {
                     return (<CartSliderProduct
+                        key={product.id}
                         updateQuantity={updateQuantityNative}
                         removeProduct={removeProductNative}
                         {...product} />)

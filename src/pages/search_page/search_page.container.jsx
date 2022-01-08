@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { addToCart } from "../../utility/Utility.component"
 import { withRouter } from 'react-router'; 
 
@@ -50,11 +50,10 @@ const SearchPage = function (props) {
     return (
 
         <div className="page_section listing_page_container">
-
             <div className="listing_products_container">
                 {searchProducts.length > 0 || LoadingSpinner ?
 
-                    searchProducts.map(product => <Product addToCart={nativeAddToCart} {...product} />)
+                    searchProducts.map(product => <Product key={product.id} addToCart={nativeAddToCart} {...product} />)
 
                     : <Spinner />}
             </div>

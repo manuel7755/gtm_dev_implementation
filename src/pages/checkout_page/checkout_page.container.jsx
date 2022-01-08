@@ -1,28 +1,27 @@
 import "./checkout_page.styles.scss";
-import {
-    Select,
-    MenuItem,
-    FormControl,
-    TextField,
-    RadioGroup,
-    FormLabel,
-    Radio,
-    FormControlLabel,
-    InputLabel,
-    Box,
-    Button
-
-} from '@mui/material';
-
+import React, { useEffect, useContext, useState } from "react";
 import { CartContext } from '../../Contexts/Cart';
-import CheckoutStepper from "../../components/CheckoutStepper/CheckoutStepper.component"
-import React, { useContext } from 'react';
+import CheckoutStepper from "../../components/CheckoutStepper/CheckoutStepper.component";
+import { BsTypeH1 } from "react-icons/bs";
 
 
 
 const CheckoutPage = () => {
     
     const { cart, setCart } = useContext(CartContext);
+    const [cartProductsExist , setCartProductsExist] = useState(false);
+
+
+    useEffect(() => {
+        if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
+
+            setCartProductsExist(true)
+        } else {
+            
+            setCartProductsExist(false)
+        }
+
+    }, [cart])
 
     const checkoutStepListener = (activeStep) => {
 
@@ -33,8 +32,10 @@ const CheckoutPage = () => {
 
     return (
         <div className="page_section checkout_page_container">
+            { cartProductsExist ? 
             <CheckoutStepper checkoutStepListener={checkoutStepListener} cart={cart} setCart={setCart}/>
-        </div>
+                : <h1>Your cart is empty! add products to cart before checking out</h1>}
+         </div>
     )
 }
 
