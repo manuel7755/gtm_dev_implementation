@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
-import "./checkout_page.styles.scss";
 import React, { useEffect, useContext, useState } from "react";
+import "./checkout_page.styles.scss";
+
 import { CartContext } from '../../Contexts/Cart';
 import CheckoutStepper from "../../components/CheckoutStepper/CheckoutStepper.component";
 import { BsTypeH1 } from "react-icons/bs";
