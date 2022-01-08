@@ -54,7 +54,7 @@ const SearchPage = function (props) {
             <div className="listing_products_container">
                 {searchProducts.length > 0 || LoadingSpinner ?
 
-                    searchProducts.map(product => <Product addToCart={nativeAddToCart} {...product} />)
+                    searchProducts.map(product => <Product key={product.id} addToCart={nativeAddToCart} {...product} />)
 
                     : <Spinner />}
             </div>

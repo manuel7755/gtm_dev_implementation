@@ -2,10 +2,6 @@ import React from 'react';
 import './Button.styles.scss';
 
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    withRouter,
     Link
 } from 'react-router-dom';
 

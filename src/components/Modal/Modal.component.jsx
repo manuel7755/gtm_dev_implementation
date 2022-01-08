@@ -1,7 +1,5 @@
-import React, { Component, useState, useContext, useEffect } from 'react';
+import React, { useState, useContext} from 'react';
 import "./Modal.styles.scss";
-
-import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
 
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
@@ -10,25 +8,11 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { autocompleteClasses } from '@mui/material';
+
 
 import { CartContext } from '../../Contexts/Cart';
 
 
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: "100%",
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  textAlign: "centre",
-  padding: "2rem",
-  p: 4
-};
 
 export function TransitionsModal({ name, login }) {
 

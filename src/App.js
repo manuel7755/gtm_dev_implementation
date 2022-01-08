@@ -1,5 +1,4 @@
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   withRouter,
@@ -19,10 +18,10 @@ import Productpage from './pages/product_page/product_page.container';
 import Contactpage from './pages/contact_page/contact_page.container';
 import Checkoutpage from './pages/checkout_page/checkout_page.container';
 
-import Utility from "./utility/Utility.component";
+
 import NavBar from './components/NavBar/Navbar.component';
 import Footer from "./components/Footer/Footer.component";
-import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from './utility/Utility.component';
+import { getCartInfo } from './utility/Utility.component';
 
 
 import './App.scss';

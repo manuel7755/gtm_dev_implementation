@@ -8,13 +8,13 @@ const Footer = () => {
         <div className="footer_container">
             <ul>
                 <li>
-                    <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+                    <a href="https://www.facebook.com/" target="_blank"  rel="noreferrer">Facebook</a>
                 </li>
                 <li>
-                    <a href="https://www.google.com/search?q=blogs">Blog</a>
+                    <a href="https://www.google.com/search?q=blogs"  rel="noreferrer">Blog</a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                    <a href="https://www.instagram.com/" target="_blank"  rel="noreferrer">Instagram</a>
                 </li>
                 <li>
                     <a href="#">Newsfeed</a>

@@ -1,15 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import "./CheckoutStepper.styles.scss";
 import {
-    Select,
-    MenuItem,
     FormControl,
     TextField,
-    RadioGroup,
     FormLabel,
-    Radio,
-    FormControlLabel,
-    InputLabel,
     Button
 
 } from '@mui/material';
@@ -212,7 +206,7 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener,
 
                                                         cart.cartProducts.map(product => {
 
-                                                            return (<Product ommit="addToCart" {...product} />)
+                                                            return (<Product key={product.id} ommit="addToCart" {...product} />)
                                                         })
                                                         : null}
                                                 </div>

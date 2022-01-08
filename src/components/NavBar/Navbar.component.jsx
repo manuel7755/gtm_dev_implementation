@@ -9,7 +9,6 @@ import { SearchProductsContext } from '../../Contexts/SearchProducts';
 import { LoadingSpinnerContext } from '../../Contexts/LoadingSpinner';
 
 import NavLink from '../NavLinks/NavLinks.component';
-import HomeLogo from '../Logo/Logo.component';
 import CartSlider from "../CartSlider/CartSlider.component";
 import { TransitionsModal } from '../../components/Modal/Modal.component';
 
@@ -116,7 +115,6 @@ const Navbar = (props) => {
 
                                 </button>
                             </>
-
                             : <>
                                 <br />
                                 <button className="logout_btn" onClick={() => userLogout()} >
