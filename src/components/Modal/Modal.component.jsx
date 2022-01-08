@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useState } from 'react';
 import "./Modal.styles.scss";
 
 import Backdrop from '@mui/material/Backdrop';
@@ -10,17 +10,10 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 
 
-import { CartContext } from '../../Contexts/Cart';
-
-
-
 export function TransitionsModal({ name, login }) {
 
-  const [open, setOpen] = React.useState(false);
-  const [password, setPassword] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const { cart, setCart } = useContext(CartContext);
-  const [product, setProduct] = useState({})
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 

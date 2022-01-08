@@ -24,16 +24,21 @@ const Navbar = (props) => {
 
     const isMobile = useCheckMobileScreen();
     const [navigationMenuToggle, setNavigationMenuToggle] = useState(false);
-    const { cart, setCart } = useContext(CartContext);
+    const { cart } = useContext(CartContext);
     const { login, setLogin } = useContext(LoginContext);
-    const { searchProducts, setSearchProducts } = useContext(SearchProductsContext);
-    const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
+    const { setSearchProducts } = useContext(SearchProductsContext);
+    const { setLoadingSpinner } = useContext(LoadingSpinnerContext);
     const [cartSlider, setCartSlider] = useState(false);
 
 
     useEffect(() => {
 
-    }, [useCheckMobileScreen]);
+        if (!isMobile) {
+            
+            setNavigationMenuToggle(false)
+        }
+
+    }, [isMobile]);
 
     const inputListener = (e) => {
 
@@ -78,7 +83,6 @@ const Navbar = (props) => {
             setLogin(true)
 
         })
-
     }
 
     const userLogout = () => {

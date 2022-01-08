@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./OrderConfirmation.styles.scss";
 
 const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCode }) => {
     
     const subtotal = cart.cartInfo.totalPrice;
-    const tax = (cart.cartInfo.totalPrice * .13).toFixed(2);
-    const total = (+subtotal + +tax).toFixed(2);
+    const tax = useMemo(() => (cart.cartInfo.totalPrice * .13).toFixed(2),[cart.cartInfo.totalPrice]);
+    const total = useMemo(() => (+subtotal + +tax).toFixed(2),[tax,subtotal]);
 
     return (
         <div className="orderConfirmation_container">

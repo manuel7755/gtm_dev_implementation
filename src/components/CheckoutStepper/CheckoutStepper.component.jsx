@@ -217,12 +217,6 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener,
 
                                             : null}
 
-                            {/* </div> */}
-
-
-
-
-
                             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                 <Button
                                     color="inherit"

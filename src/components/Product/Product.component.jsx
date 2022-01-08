@@ -1,10 +1,6 @@
 import React from 'react';
 import './Product.styles.scss';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    withRouter,
     Link
 } from 'react-router-dom';
 
@@ -12,7 +8,7 @@ import Button from '../../components/Button/Button.component';
 import ReviewStars from "../ReviewStars/ReviewStars.component";
 
 
-const Product = ({ id, image, title, description, price, addToCart, quantity, ommit, rating: { rate } }) => {
+const Product = ({ id, image, title, price, addToCart, quantity, ommit, rating: { rate } }) => {
     return (
 
         <div className="product_container">

@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './listing_page.styles.scss';
 
 import Product from '../../components/Product/Product.component';
 import { apiCallProducts } from '../../utility/Utility.component';
-import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
+import { addToCart } from '../../utility/Utility.component';
 import { CartContext } from '../../Contexts/Cart';
 import { LoadingSpinnerContext } from '../../Contexts/LoadingSpinner';
 import { ListingProductsContext } from '../../Contexts/ListingProducts';
