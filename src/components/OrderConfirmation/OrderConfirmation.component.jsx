@@ -2,7 +2,7 @@ import React from "react";
 import "./OrderConfirmation.styles.scss";
 
 const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCode }) => {
-
+    
     const subtotal = cart.cartInfo.totalPrice;
     const tax = (cart.cartInfo.totalPrice * .13).toFixed(2);
     const total = (+subtotal + +tax).toFixed(2);

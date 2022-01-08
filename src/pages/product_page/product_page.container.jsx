@@ -23,21 +23,15 @@ const ProductPage = () => {
 
         apiGetProduct(pCode, (product) => {
 
-            console.log(product)
-
             setProduct({ ...product, quantity: 1 })
 
         })
 
-        //get product quantity
     }, [])
 
     function updateProductQuantity(e) {
 
         let updatedProduct = { ...product, quantity: +e.target.value };
-
-        console.log('updated quantity', updatedProduct)
-
 
         setProduct(updatedProduct)
     }
@@ -47,21 +41,11 @@ const ProductPage = () => {
 
         let updatedProduct = { ...product };
 
-        console.log('product at addToCart ', updatedProduct)
-
-
         addToCart(cart, updatedProduct).then((updatedCart) => {
-
-            console.log('product has been added to cart', updatedCart);
 
             setSuccessAddToCart(true)
 
-
             setCart({ ...updatedCart })
-
-            console.log('cartInfo ', updatedCart.cartInfo)
-
-
         })
         setTimeout(() => {
 
