@@ -115,7 +115,6 @@ export const addToCart = (cart, product) => {
                 resolve({ cartProducts: cart.cartProducts, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } })
 
             } catch (error) {
-                console.log('Add to cart error ' + error)
                 reject(error)
             }
 
