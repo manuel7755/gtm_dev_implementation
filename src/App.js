@@ -29,16 +29,7 @@ import './App.scss';
 
 
 const TagManagerArgs = {
-  gtmId: "GTM-N5JL87F",
-  dataLayer:{
-    event: "pageview",
-    page:{
-      path:"/homepage",
-      title:"gtm_dev_implementation"
-    }
-
-  }
-
+  gtmId: "GTM-N5JL87F"
 }
 
 TagManager.initialize(TagManagerArgs)

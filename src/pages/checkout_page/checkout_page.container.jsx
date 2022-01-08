@@ -45,7 +45,7 @@ const CheckoutPage = () => {
 
     return (
         <div className="page_section checkout_page_container">
-            <CheckoutStepper checkoutStepListener={checkoutStepListener} cart={cart} />
+            <CheckoutStepper checkoutStepListener={checkoutStepListener} cart={cart} setCart={setCart} />
         </div>
     )
 }
