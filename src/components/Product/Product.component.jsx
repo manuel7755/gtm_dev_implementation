@@ -1,10 +1,6 @@
 import React from 'react';
 import './Product.styles.scss';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    withRouter,
     Link
 } from 'react-router-dom';
 
@@ -12,11 +8,10 @@ import Button from '../../components/Button/Button.component';
 import ReviewStars from "../ReviewStars/ReviewStars.component";
 
 
-
-
-const Product = ({ id, image, title, description, price, addToCart, quantity, ommit, rating: { rate } }) => {
+const Product = ({ id, image, title, price, addToCart, quantity, ommit, rating: { rate } }) => {
     return (
-        <div key={id} className="product_container">
+
+        <div className="product_container">
             <div className="product_content">
                 <div className="product_image">
                     <Link to={`/product?pCode=${id}`}>

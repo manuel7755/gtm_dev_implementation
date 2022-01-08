@@ -19,10 +19,12 @@ import {
 
 const ContactForm = () => {
 
-    const [age, setAge] = React.useState('');
+    const [subject, setSubject] = React.useState('');
     const [value, setValue] = React.useState('');
 
     const handleChange = (event, set) => {
+
+        console.log(event.target.value)
         set(event.target.value);
     };
 
@@ -33,25 +35,26 @@ const ContactForm = () => {
     return (
         <div className="contactForm_container">
             <h1>Contact Us</h1>
-            <form onSubmit={() => handleSubmit()}>
-                <TextField id="filled-basic" label="name" variant="filled" />
-                <TextField id="filled-basic" label="email" variant="filled" />
-                <br />
+            <form onSubmit={handleSubmit}>
+
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Subject</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={age}
-                            label="Age"
-                            onChange={(e) => handleChange(e, setAge)}
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
+                        <TextField id="filled-basic" label="name" variant="filled" />
+                        <TextField id="filled-basic" label="email" variant="filled" />
+                        <br />
                     </FormControl>
+                    <InputLabel id="demo-simple-select-label">Subject</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={subject}
+                        label="subject"
+                        onChange={(e) => handleChange(e, setSubject)}
+                    >
+                        <MenuItem value="technical">Technical</MenuItem>
+                        <MenuItem value="order">Order</MenuItem>
+                        <MenuItem value="return">Item Return</MenuItem>
+                    </Select>
                 </Box>
                 <TextField
                     id="filled-multiline-flexible"

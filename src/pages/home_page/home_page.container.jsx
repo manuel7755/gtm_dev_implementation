@@ -81,29 +81,29 @@ const Homepage = () => {
 
                 <div className="media_video_container">
                     <h1>Checkout Our New Camera Addition!</h1>
-                    <iframe src="https://www.youtube.com/embed/3bCpnTD3Tt8?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/3bCpnTD3Tt8?start=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
 
-                <section class="section_about_product">
-                    <div class="product_description_container">
-                        <div class="product_description_image_container">
+                <section className="section_about_product">
+                    <div className="product_description_container">
+                        <div className="product_description_image_container">
                             <img src={PromoVaccums} />
                         </div>
-                        <div class="product_description">
-                            <h2 class="heading-secondary">2 x 1 Robot Vaccums!</h2>
-                            <p class="paragraph">
+                        <div className="product_description">
+                            <h2 className="heading-secondary">2 x 1 Robot Vaccums!</h2>
+                            <p className="paragraph">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ab doloribus quidem quo omnis fugit similique amet adipisci repellat quasi itaque nulla fuga, esse hic qui maxime unde quibusdam doloremque?
                             </p>
                         </div>
                     </div>
-                    <div class="product_description_container">
-                        <div class="product_description">
-                            <h2 class="heading-secondary">50% Off Pans This Week!</h2>
-                            <p class="paragraph">
+                    <div className="product_description_container">
+                        <div className="product_description">
+                            <h2 className="heading-secondary">50% Off Pans This Week!</h2>
+                            <p className="paragraph">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, eos? Ipsam soluta, natus neque cumque nesciunt quia esse delectus tempore officiis assumenda atque culpa dolorum facilis omnis labore nam quae.
                             </p>
                         </div>
-                        <div class="product_description_image_container">
+                        <div className="product_description_image_container">
                             <img src={PromoPans} alt="mini mendiants" />
                         </div>
                     </div>

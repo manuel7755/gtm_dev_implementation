@@ -1,8 +1,7 @@
-import React, { Component, useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './product_page.styles.scss';
 
-import { apiGetProduct, getQueryParam, addToCart, getCartInfo } from '../../utility/Utility.component';
-
+import { apiGetProduct, getQueryParam, addToCart } from '../../utility/Utility.component';
 import { Alert } from '@material-ui/lab';
 import { CartContext } from '../../Contexts/Cart';
 
@@ -101,7 +100,6 @@ const ProductPage = () => {
                         <Alert variant="filled" severity="success">
                             Success You Have Added To Cart!
                         </Alert>
-
                         : null}
                 </div>
             </div>
