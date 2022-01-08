@@ -8,11 +8,12 @@ import CartSliderProduct from "../CartSliderProduct/CartSliderProduct.component"
 import Button from "../Button/Button.component";
 
 
-const CartSlider = ({ activeStatus }) => {
+const CartSlider = ({ activeStatus, onMouseLeave }) => {
 
     const { cart, setCart } = useContext(CartContext);
 
     useEffect(() => {
+        
 
     }, [activeStatus])
 
@@ -35,7 +36,7 @@ const CartSlider = ({ activeStatus }) => {
     }
 
     return (
-        <div className={`addToCartSlider_container addToCartSlider_container--${activeStatus}`} >
+        <div onMouseLeave={() => onMouseLeave()} className={`addToCartSlider_container addToCartSlider_container--${activeStatus}`} >
             <div className="addToCartSlider_content">
                 {cart.cartProducts && cart.cartProducts.length > 0 ? cart.cartProducts.map(product => {
                     return (<CartSliderProduct
