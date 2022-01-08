@@ -39,6 +39,23 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener 
     const [coupon, setCoupon] = React.useState(0);
     const [city, setCity] = React.useState("");
     const [orderNumber, setOrderNumber] = React.useState("");
+    const [orderCart, setOrderCart] = React.useState({});
+
+
+    useEffect(() => {
+
+        checkoutStepListener(activeStep)
+
+        if (allStepsCompleted()) {
+
+            setOrderCart({...cart})
+
+            // clear cart
+            setCart([])
+
+            sessionStorage.removeItem("cart") 
+        }
+    },[activeStep])
 
     useEffect(() => {
 
@@ -117,7 +134,7 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener 
                     ))}
                 </Stepper>
                 <div>
-                    {allStepsCompleted() ? (
+                    {allStepsCompleted() && orderCart.cartProducts && orderCart.cartProducts.length > 0 ? (
                         <React.Fragment>
                             <Typography sx={{ mt: 2, mb: 1 }}>
                                 <h2> All steps are completed, thank you for your order! </h2>
@@ -125,13 +142,12 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener 
                             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                 <Box sx={{ flex: '1 1 auto' }} />
                                 <OrderConfirmation
-                                    cart={cart}
+                                    cart={orderCart}
                                     orderId={orderNumber}
                                     address={address}
                                     creditCard={creditCard}
                                     postalCode={postalCode}
                                     city={city}
-                                
                                 />
                                 {/* <Button onClick={handleReset}>Reset</Button> */}
                             </Box>
@@ -191,7 +207,6 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener 
                                         />
                                         </FormControl>
 
-
                                         :
                                         activeStep + 1 === 3 ?
 
@@ -206,8 +221,6 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener 
 
                                                             return (<Product ommit="addToCart" {...product} />)
                                                         })
-
-
                                                         : null}
                                                 </div>
                                                 <h2>Tax: {(cart.cartInfo.totalPrice * .13).toFixed(2)}</h2>
@@ -216,11 +229,6 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener 
                                             </>
 
                                             : null}
-
-                            {/* </div> */}
-
-
-
 
 
                             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>

@@ -51,13 +51,11 @@ const ProductPage = () => {
 
         let updatedProduct = { ...product };
 
-
         addToCart(cart, updatedProduct).then((updatedCart) => {
 
             setSuccessAddToCart(true)
 
             setCart({ ...updatedCart })
-
         })
         setTimeout(() => {
 
