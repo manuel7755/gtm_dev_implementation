@@ -29,7 +29,7 @@ const ProductPage = () => {
                         pageType: "productPage"
                     },
 
-                    product: [{ ...product }]
+                    product: { ...product }
                 }
             })
 
