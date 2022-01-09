@@ -69,7 +69,7 @@ const SearchPage = function (props) {
             <div className="listing_products_container">
                 {searchProducts.length > 0 || LoadingSpinner ?
 
-                    searchProducts.map(product => <Product key={product.id} addToCart={nativeAddToCart} {...product} />)
+                    searchProducts.map((product, index) => <Product key={product.id} position={index + 1} addToCart={nativeAddToCart} {...product} />)
 
                     : <Spinner />}
             </div>

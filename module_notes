@@ -8,3 +8,9 @@
 (2) ******Module [dataLayer]*******
 
 // step 1 setup dataLayer pageview events to all pages
+
+(2) ******Module [Enhanced Ecommerce Events]*******
+
+// apply event listeners on the main enhanced ecommerce actions
+// pass position metric (search page && listing page)
+// change pages that return a single product to product

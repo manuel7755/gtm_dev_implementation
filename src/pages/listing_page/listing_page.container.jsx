@@ -72,7 +72,7 @@ const ListingPage = () => {
             <div className="listing_products_container">
                 {listingProducts.length > 0 || LoadingSpinner ?
 
-                    listingProducts.map(product => <div key={product.id}> <Product addToCart={nativeAddToCart} {...product} /> </div>)
+                    listingProducts.map((product, index) => <div key={product.id}> <Product position={index + 1} addToCart={nativeAddToCart} {...product} /> </div>)
 
                     : <Spinner />}
             </div>
