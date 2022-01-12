@@ -30,6 +30,7 @@ const CheckoutPage = () => {
 
     const checkoutStepName =  activeStep === 0 ? "billing" : activeStep === 1 ? "payment" : activeStep === 2 ? "confirmation" : "";
     
+        setActiveStep(activeStep)
 
         TagManager.dataLayer({
             dataLayer: {
