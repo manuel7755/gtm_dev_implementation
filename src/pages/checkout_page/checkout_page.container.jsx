@@ -12,7 +12,7 @@ const CheckoutPage = () => {
     
     const { cart, setCart } = useContext(CartContext);
     const [cartProductsExist , setCartProductsExist] = useState(false);
-
+    const [activeStep, setActiveStep] = useState(0)
 
     useEffect(() => {
         if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
@@ -45,9 +45,9 @@ const CheckoutPage = () => {
 
     return (
         <div className="page_section checkout_page_container">
-            { cartProductsExist ? 
+            { cartProductsExist || activeStep > 2 ? 
             <CheckoutStepper checkoutStepListener={checkoutStepListener} cart={cart} setCart={setCart}/>
-                : <h1>Your cart is empty! add products to cart before checking out</h1>}
+                : <h1 style={{marginTop:"5rem"}}>Your cart is empty! add products to cart before checking out</h1>}
          </div>
     )
 }

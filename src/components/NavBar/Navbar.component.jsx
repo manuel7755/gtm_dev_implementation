@@ -37,7 +37,6 @@ const Navbar = (props) => {
             
             setNavigationMenuToggle(false)
         }
-
     }, [isMobile]);
 
     const inputListener = (e) => {
@@ -146,11 +145,11 @@ const Navbar = (props) => {
                     }
                 </ul>
             </div>
-            <ReactBsIcons.BsFillCartPlusFill onClick={() => setCartSlider(!cartSlider)} />
+            <ReactBsIcons.BsFillCartPlusFill onClick={() => setCartSlider(!cartSlider)} onMouseEnter={() => setCartSlider(true)} />
             <div className="cart_quantity">
                 <h5>{cart.cartInfo && cart.cartInfo.totalItems || 0}</h5>
             </div>
-            <CartSlider activeStatus={cartSlider} />
+            <CartSlider onMouseLeave={() => setCartSlider(false)}  activeStatus={cartSlider} />
         </div>
     )
 }

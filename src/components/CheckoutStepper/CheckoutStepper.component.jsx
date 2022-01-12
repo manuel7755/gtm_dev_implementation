@@ -45,7 +45,7 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener,
             setOrderCart({...cart})
 
             // clear cart
-            setCart([])
+            setCart({ cartProducts: [], cartInfo: { totalItems: 0, totalPrice: 0 } })
 
             sessionStorage.removeItem("cart") 
         }

@@ -9,11 +9,12 @@ import Button from "../Button/Button.component";
 import TagManager from "react-gtm-module";
 
 
-const CartSlider = ({ activeStatus }) => {
+const CartSlider = ({ activeStatus, onMouseLeave }) => {
 
     const { cart, setCart } = useContext(CartContext);
 
     useEffect(() => {
+        
 
         if (activeStatus) {
 
@@ -51,7 +52,7 @@ const CartSlider = ({ activeStatus }) => {
     }
 
     return (
-        <div className={`addToCartSlider_container addToCartSlider_container--${activeStatus}`} >
+        <div onMouseLeave={() => onMouseLeave()} className={`addToCartSlider_container addToCartSlider_container--${activeStatus}`} >
             <div className="addToCartSlider_content">
                 {cart.cartProducts && cart.cartProducts.length > 0 ? cart.cartProducts.map(product => {
                     return (<CartSliderProduct
