@@ -23,7 +23,7 @@ const Product = ({ id, image, title, category, price, addToCart, quantity, ommit
     }
 
     return (
-        <div onClick={() => eeProductClick()} className="product_container">
+        <div productId={id} onClick={() => eeProductClick()} className="product_container">
             <div className="product_content">
                 <div className="product_image">
                     <Link to={`/product?pCode=${id}`}>

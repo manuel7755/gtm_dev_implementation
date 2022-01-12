@@ -14,3 +14,4 @@
 // apply event listeners on the main enhanced ecommerce actions
 // pass position metric (search page && listing page)
 // change pages that return a single product to product
+// ad id attribute to the product component 
