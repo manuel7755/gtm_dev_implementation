@@ -1,4 +1,5 @@
 
+import TagManager from "react-gtm-module";
 import  { useState, useEffect } from 'react';
 
 
@@ -86,6 +87,19 @@ export const addToCart = (cart, product) => {
             try {
                 let isProductInCart = null;
 
+                TagManager.dataLayer({
+                    dataLayer: {
+                        event: "addToCart",
+                        // page: {
+                        //     path: "/product?pCode=" + product.id,
+                        //     pageType: "productPage"
+                        // },
+    
+                        products: [{ ...product }]
+                    }
+                })
+    
+
                 console.log("cart " , cart)
 
                 if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
@@ -115,6 +129,8 @@ export const addToCart = (cart, product) => {
 
                 updateCart({ cartProducts: cart.cartProducts, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } })
                 resolve({ cartProducts: cart.cartProducts, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } })
+
+       
 
             } catch (error) {
                 reject(error)
@@ -173,7 +189,26 @@ export const calculateCart = (cart, info) => {
 
 export const removeProduct = (id, cart, call) => {
 
-    let filteredCart = cart.cartProducts.filter(product => product.id !== id);
+    let filteredCart = cart.cartProducts.filter(product => { 
+
+        if (product.id === id) {
+
+            TagManager.dataLayer({
+                dataLayer: {
+                    event: "removeProduct",
+                    // page: {
+                    //     path: "/product?pCode=" + product.id,
+                    //     pageType: "productPage"
+                    // },
+
+                    products: [{ ...product }]
+                }
+            })
+
+
+        } 
+        return product.id !== id  
+    });
     let cartQuantity = calculateCart({ cartProducts: filteredCart }, "total quantity");
     let cartTotalPrice = calculateCart({ cartProducts: filteredCart }, "total price");
     cart = { cartProducts: filteredCart, cartInfo: { totalItems: cartQuantity, totalPrice: cartTotalPrice } }
@@ -194,6 +229,18 @@ export const updateProductQuantity = (id, cart, action, call) => {
             })
 
         } else if (product.id === id && product.quantity === 1 && action === "decrease") {
+            
+            TagManager.dataLayer({
+                dataLayer: {
+                    event: "removeProduct",
+                    // page: {
+                    //     path: "/product?pCode=" + product.id,
+                    //     pageType: "productPage"
+                    // },
+
+                    products: [{ ...product }]
+                }
+            })
 
         } else if (product.id === id && product.quantity >= 1 && action === "decrease") {
 

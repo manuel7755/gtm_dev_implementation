@@ -27,10 +27,16 @@ const ProductPage = () => {
                     page: {
                         path: "/product?pCode=" + product.id,
                         pageType: "productPage"
-                    },
+                    }
+                },
+            })
 
-                    product: { ...product }
-                }
+            TagManager.dataLayer({
+                dataLayer: {
+                    event: "productDetailView",
+                    products: [{ ...product }]
+                },
+
             })
 
             setProduct({ ...product, quantity: 1 })
