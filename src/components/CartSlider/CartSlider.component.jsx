@@ -6,6 +6,7 @@ import { CartContext } from '../../Contexts/Cart';
 
 import CartSliderProduct from "../CartSliderProduct/CartSliderProduct.component";
 import Button from "../Button/Button.component";
+import TagManager from "react-gtm-module";
 
 
 const CartSlider = ({ activeStatus, onMouseLeave }) => {
@@ -14,6 +15,21 @@ const CartSlider = ({ activeStatus, onMouseLeave }) => {
 
     useEffect(() => {
         
+
+        if (activeStatus) {
+
+            TagManager.dataLayer({
+                dataLayer: {
+                    event: "pageview",
+                    page: {
+                        path: "/cart",
+                        pageType: "cartPage"
+                    },
+                    products: [...cart.cartProducts]
+                }
+            })
+        }
+
 
     }, [activeStatus])
 

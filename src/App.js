@@ -23,10 +23,22 @@ import NavBar from './components/NavBar/Navbar.component';
 import Footer from "./components/Footer/Footer.component";
 import { getCartInfo } from './utility/Utility.component';
 
+import TagManager from 'react-gtm-module';
+
 
 import './App.scss';
 
+
+const TagManagerArgs = {
+  gtmId: "GTM-N5JL87F"
+}
+
+TagManager.initialize(TagManagerArgs)
+
+
 function App() {
+  
+
 
   const [cart, setCart] = useState({});
   const [listingProducts, setListingProducts] = useState([]);

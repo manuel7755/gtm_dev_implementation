@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useState, useContext, useEffect } from 'react';
 import './home_page.styles.scss';
 
 import HeroBanner from '../../assets/images/tamanna-rumee-mIqyYpSNq3o-unsplash_main_banner.jpg'
@@ -13,8 +13,24 @@ import PromoDinnerSets from '../../assets/images/promotion_dinner_sets.jpg'
 import Button from '../../components/Button/Button.component';
 import Banner from '../../components/Banner/Banner.component';
 
+import TagManager from "react-gtm-module";
+
 
 const Homepage = () => {
+
+    
+    useEffect(() => {
+
+        TagManager.dataLayer({
+            dataLayer: {
+                event: "pageview",
+                page: {
+                    path: "/homepage",
+                    pageType: "homePage"
+                },
+            }
+        })
+    }, [])
 
     return (
         <>

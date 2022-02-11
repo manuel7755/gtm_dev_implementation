@@ -51,6 +51,13 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener,
         }
     },[activeStep])
 
+    useEffect(() => {
+
+        checkoutStepListener(activeStep)
+
+    },[activeStep])
+
+ 
     const totalSteps = () => {
         return steps.length;
     };

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { addToCart } from "../../utility/Utility.component"
-import { withRouter } from 'react-router'; 
+import { withRouter } from 'react-router';
 
 import { CartContext } from '../../Contexts/Cart';
 import { SearchProductsContext } from '../../Contexts/SearchProducts';
@@ -9,8 +9,13 @@ import { LoadingSpinnerContext } from '../../Contexts/LoadingSpinner';
 import Spinner from "../../components/Spinner/Spinner.component";
 import Product from '../../components/Product/Product.component';
 
+import TagManager from "react-gtm-module";
+
+
+
 
 const SearchPage = function (props) {
+
 
     const { searchProducts, setSearchProducts } = useContext(SearchProductsContext)
     const { cart, setCart } = useContext(CartContext);
@@ -21,6 +26,17 @@ const SearchPage = function (props) {
         const { history } = props;
         const searchTerm = history.location.state.searchKeyword;
 
+        
+        TagManager.dataLayer({
+            dataLayer: {
+                event: "pageview",
+                page: {
+                    path:"search_results?q=" + searchTerm,
+                    pageType: "searchPage"
+                },  
+                products: [...searchProducts]
+            }
+        })
 
         setSearchProducts(searchProducts)
     }, [searchProducts]);
@@ -53,7 +69,7 @@ const SearchPage = function (props) {
             <div className="listing_products_container">
                 {searchProducts.length > 0 || LoadingSpinner ?
 
-                    searchProducts.map(product => <Product key={product.id} addToCart={nativeAddToCart} {...product} />)
+                    searchProducts.map((product, index) => <Product key={product.id} position={index + 1} addToCart={nativeAddToCart} {...product} />)
 
                     : <Spinner />}
             </div>
