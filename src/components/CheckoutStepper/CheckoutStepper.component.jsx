@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import "./CheckoutStepper.styles.scss";
 import {
     FormControl,
@@ -33,6 +33,10 @@ export default function HorizontalNonLinearStepper({ cart,setCart, checkoutStepL
     const [coupon, setCoupon] = React.useState(0);
     const [city, setCity] = React.useState("");
     const [orderNumber, setOrderNumber] = React.useState("");
+    const [subTotal, setSubtotal] = React.useState(0);
+
+
+
 
     useEffect(() => {
 
@@ -40,10 +44,14 @@ export default function HorizontalNonLinearStepper({ cart,setCart, checkoutStepL
 
         if (allStepsCompleted()) {
 
+            setSubtotal(+cart.cartInfo.totalPrice);
+
+            const tax = (+cart.cartInfo.totalPrice * .13).toFixed(2);
+            const orderTotal = (+cart.cartInfo.totalPrice + +tax).toFixed(2);
 
             setOrderCart({...cart, orderNumber })
 
-            transactionCompleteListener({...cart, orderDetails:{ orderId: orderNumber}});
+            transactionCompleteListener({...cart, orderDetails:{ orderId: orderNumber, tax, orderTotal}});
 
             // clear cart
             setCart({ cartProducts: [], cartInfo: { totalItems: 0, totalPrice: 0 } })

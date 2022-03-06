@@ -23,8 +23,6 @@ const ContactForm = () => {
     const [value, setValue] = React.useState('');
 
     const handleChange = (event, set) => {
-
-        console.log(event.target.value)
         set(event.target.value);
     };
 

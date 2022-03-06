@@ -98,9 +98,7 @@ export const addToCart = (cart, product) => {
                         products: [{ ...product }]
                     }
                 })
-    
 
-                console.log("cart " , cart)
 
                 if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
 
