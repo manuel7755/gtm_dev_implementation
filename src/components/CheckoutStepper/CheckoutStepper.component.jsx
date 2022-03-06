@@ -21,7 +21,7 @@ import { generateRandomOrderNumber } from "../../utility/Utility.component";
 
 const steps = ['Billing', 'Payment', 'Order Confirmation'];
 
-export default function HorizontalNonLinearStepper({ cart, checkoutStepListener, setCart }) {
+export default function HorizontalNonLinearStepper({ cart,setCart, checkoutStepListener,transactionCompleteListener, orderCart, setOrderCart}) {
 
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState({});
@@ -33,8 +33,6 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener,
     const [coupon, setCoupon] = React.useState(0);
     const [city, setCity] = React.useState("");
     const [orderNumber, setOrderNumber] = React.useState("");
-    const [orderCart, setOrderCart] = React.useState({});
-
 
     useEffect(() => {
 
@@ -42,19 +40,16 @@ export default function HorizontalNonLinearStepper({ cart, checkoutStepListener,
 
         if (allStepsCompleted()) {
 
-            setOrderCart({...cart})
+
+            setOrderCart({...cart, orderNumber })
+
+            transactionCompleteListener({...cart, orderDetails:{ orderId: orderNumber}});
 
             // clear cart
             setCart({ cartProducts: [], cartInfo: { totalItems: 0, totalPrice: 0 } })
 
             sessionStorage.removeItem("cart") 
         }
-    },[activeStep])
-
-    useEffect(() => {
-
-        checkoutStepListener(activeStep)
-
     },[activeStep])
 
  
