@@ -9,9 +9,9 @@ import TagManager from "react-gtm-module";
 
 
 const CheckoutPage = () => {
-    
+
     const { cart, setCart } = useContext(CartContext);
-    const [cartProductsExist , setCartProductsExist] = useState(false);
+    const [cartProductsExist, setCartProductsExist] = useState(false);
     const [activeStep, setActiveStep] = useState(0)
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const CheckoutPage = () => {
 
             setCartProductsExist(true)
         } else {
-            
+
             setCartProductsExist(false)
         }
 
@@ -28,28 +28,27 @@ const CheckoutPage = () => {
 
     const checkoutStepListener = (activeStep) => {
 
-    const checkoutStepName =  activeStep === 0 ? "billing" : activeStep === 1 ? "payment" : activeStep === 2 ? "confirmation" : "";
-    
+        const checkoutStepName = activeStep === 0 ? "billing" : activeStep === 1 ? "payment" : activeStep === 2 ? "order_review" : "";
+
         setActiveStep(activeStep)
 
         TagManager.dataLayer({
             dataLayer: {
                 event: "pageview",
                 page: {
-                    path:"/checkout_" + checkoutStepName,
+                    path: "/checkout_" + checkoutStepName,
                     pageType: "checkout"
-                },  
+                },
             }
         })
-
     }
 
     return (
         <div className="page_section checkout_page_container">
-            { cartProductsExist || activeStep > 2 ? 
-            <CheckoutStepper checkoutStepListener={checkoutStepListener} cart={cart} setCart={setCart}/>
-                : <h1 style={{marginTop:"5rem"}}>Your cart is empty! add products to cart before checking out</h1>}
-         </div>
+            {cartProductsExist || activeStep > 2 ?
+                <CheckoutStepper checkoutStepListener={checkoutStepListener} cart={cart} setCart={setCart} />
+                : <h1 style={{ marginTop: "5rem" }}>Your cart is empty! add products to cart before checking out</h1>}
+        </div>
     )
 }
 

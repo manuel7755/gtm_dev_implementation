@@ -1,18 +1,42 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import "./OrderConfirmation.styles.scss";
+import TagManager from "react-gtm-module";
 
 const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCode }) => {
-    
+
     const subtotal = cart.cartInfo.totalPrice;
-    const tax = useMemo(() => (cart.cartInfo.totalPrice * .13).toFixed(2),[cart.cartInfo.totalPrice]);
-    const total = useMemo(() => (+subtotal + +tax).toFixed(2),[tax,subtotal]);
+    const tax = useMemo(() => (cart.cartInfo.totalPrice * .13).toFixed(2), [cart.cartInfo.totalPrice]);
+    const total = useMemo(() => (+subtotal + +tax).toFixed(2), [tax, subtotal]);
+
+
+
+    useEffect(() => {
+        TagManager.dataLayer({
+            dataLayer: {
+                event: "pageview",
+                page: {
+                    path: "/order_confirmation",
+                    pageType: "order_confirmation"
+                },
+                transaction: {
+                    orderInfo: {
+                        orderId,
+                        tax,
+                        subtotal,
+                        total
+                    },
+                    cart: cart
+                }
+            }
+        })
+    }, [cart]);
 
     return (
         <div className="orderConfirmation_container">
             <div className="orderConfirmation_content">
                 <div className="orderConfirmation_products">
                     <table>
-                        <tb>
+                        <tbody>
                             <th>
                                 Name
                             </th>
@@ -38,7 +62,7 @@ const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCod
                                     </tr>
                                 )
                             })}
-                        </tb>
+                        </tbody>
                     </table>
                 </div>
                 <div className="orderConfirmation_user_details">

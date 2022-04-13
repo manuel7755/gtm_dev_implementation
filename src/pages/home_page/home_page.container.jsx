@@ -35,42 +35,40 @@ const Homepage = () => {
     return (
         <>
             <div className='page_section homepage_container'>
-                <div className='banner_container'>
+                <div promo="black friday sale" creative="50% hero banner" className='banner_container'>
                     <Banner bannerImage={HeroBanner} />
                 </div>
                 <div className="promotions_container">
-                    <div className="promotion_slot">
+                    <div promo="2 x 1 blk friday shoes" creative="red nike shoes" className="promotion_slot">
 
-                        <Banner bannerImage={PromoShoes} />
+                        <Banner  bannerImage={PromoShoes} />
                         <div className="promotion_title">
                             <h1>Shoes</h1>
                         </div>
                         <Button link='/catalogue'>Shop Now</Button>
                     </div>
-                    <div className="promotion_slot">
-
-                        <Banner bannerImage={PromoBackpacks} />
+                    <div promo="25% off blk friday backpacks" creative="blue backpack" className="promotion_slot">
+                        <Banner  bannerImage={PromoBackpacks} />
                         <div className="promotion_title">
                             <h1>Backpacks</h1>
                         </div>
                         <Button link='/catalogue'>Shop Now</Button>
                     </div>
-                    <div className="promotion_slot">
-
+                    <div promo="free blk friday couch shipping" creative="beige couch" className="promotion_slot">
                         <Banner bannerImage={PromoCouches} />
                         <div className="promotion_title">
                             <h1>Couches</h1>
                         </div>
                         <Button link='/catalogue'>Shop Now</Button>
                     </div>
-                    <div className="promotion_slot">
+                    <div promo="30% off blk friday dinner sets" creative="grey dinner set" className="promotion_slot">
                         <Banner bannerImage={PromoDinnerSets} />
                         <div className="promotion_title">
                             <h1>Dinner Sets</h1>
                         </div>
                         <Button link='/catalogue'>Shop Now</Button>
                     </div>
-                    <div className="promotion_slot">
+                    <div promo="2 X 1 blk friday watches" creative="rolex watch" className="promotion_slot">
                         <Banner bannerImage={PromoWatches} />
                         <div className="promotion_title">
                             <h1>Watches</h1>
@@ -89,7 +87,7 @@ const Homepage = () => {
                         <div className="product_description_image_container">
                             <img src={PromoVaccums} />
                         </div>
-                        <div className="product_description">
+                        <div promo="2 x 1 blk friday vaccums" creative="red vaccum" className="product_description">
                             <h2 className="heading-secondary">2 x 1 Robot Vaccums!</h2>
                             <p className="paragraph">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ab doloribus quidem quo omnis fugit similique amet adipisci repellat quasi itaque nulla fuga, esse hic qui maxime unde quibusdam doloremque?
@@ -97,7 +95,7 @@ const Homepage = () => {
                         </div>
                     </div>
                     <div className="product_description_container">
-                        <div className="product_description">
+                        <div promo="50% off blk friday pans" creative="masterchef pans" className="product_description">
                             <h2 className="heading-secondary">50% Off Pans This Week!</h2>
                             <p className="paragraph">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, eos? Ipsam soluta, natus neque cumque nesciunt quia esse delectus tempore officiis assumenda atque culpa dolorum facilis omnis labore nam quae.
