@@ -98,7 +98,6 @@ export const addToCart = (cart, product) => {
                         products: [{ ...product }]
                     }
                 })
-    
 
                 if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
 
