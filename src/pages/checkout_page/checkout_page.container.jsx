@@ -43,7 +43,7 @@ const CheckoutPage = () => {
             }
         })
     },[activeStep])
-
+//change
     return (
         <div className="page_section checkout_page_container">
             {cartProductsExist || activeStep > 2 ?
