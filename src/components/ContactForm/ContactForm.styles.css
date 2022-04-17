@@ -1,0 +1,28 @@
+/* 0-600px Phone
+    600px-900px Table Portrait
+    900px-1200px Table landscape
+    1200-1800 is where our normal styles apply
+    1800 + Big Desktop
+*/
+.contactForm_container {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .contactForm_container {
+    width: 80%;
+  }
+}
+
+.contactForm_container * {
+  width: 100%;
+}
+/*# sourceMappingURL=ContactForm.styles.css.map */

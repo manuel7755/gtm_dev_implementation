@@ -1,0 +1,50 @@
+/* 0-600px Phone
+    600px-900px Table Portrait
+    900px-1200px Table landscape
+    1200-1800 is where our normal styles apply
+    1800 + Big Desktop
+*/
+.addToCartSlider_container {
+  width: 30%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background-color: #227c73;
+  position: fixed;
+  margin-left: 70%;
+  top: 5rem;
+  z-index: -1;
+  -webkit-transition: display 2s ease;
+  transition: display 2s ease;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+  overflow: scroll;
+}
+
+.addToCartSlider_container--true {
+  display: block;
+}
+
+.addToCartSlider_container--false {
+  display: none;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .addToCartSlider_container {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.addToCartSlider_container .addToCartSlider_content {
+  margin-bottom: 6rem;
+  width: 100%;
+}
+/*# sourceMappingURL=CartSlider.styles.css.map */

@@ -1,0 +1,34 @@
+/* 0-600px Phone
+    600px-900px Table Portrait
+    900px-1200px Table landscape
+    1200-1800 is where our normal styles apply
+    1800 + Big Desktop
+*/
+.navLink {
+  height: 100%;
+  width: auto;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (max-width: 75em) {
+  .navLink {
+    position: relative;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 5px;
+  }
+}
+
+.navLink_link {
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+}
+/*# sourceMappingURL=NavLinks.styles.css.map */

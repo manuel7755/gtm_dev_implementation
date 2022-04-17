@@ -1,0 +1,37 @@
+.footer_container {
+  margin-top: 2rem;
+  height: 2rem;
+  width: 100%;
+  background-color: black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+.footer_container ul {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -ms-flex-direction: horizontal;
+      flex-direction: horizontal;
+  list-style-type: none;
+}
+
+.footer_container ul li {
+  margin: 2px;
+}
+
+.footer_container ul li a {
+  color: white;
+}
+/*# sourceMappingURL=Footer.styles.css.map */

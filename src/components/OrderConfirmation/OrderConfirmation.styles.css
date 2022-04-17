@@ -1,0 +1,60 @@
+/* 0-600px Phone
+    600px-900px Table Portrait
+    900px-1200px Table landscape
+    1200-1800 is where our normal styles apply
+    1800 + Big Desktop
+*/
+.orderConfirmation_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.orderConfirmation_container .orderConfirmation_products {
+  width: 70rem;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .orderConfirmation_container .orderConfirmation_products {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.orderConfirmation_container .orderConfirmation_products table {
+  border: 1px solid black;
+  width: 100%;
+  height: auto;
+}
+
+.orderConfirmation_container .orderConfirmation_products table th, .orderConfirmation_container .orderConfirmation_products table tr, .orderConfirmation_container .orderConfirmation_products table td {
+  text-align: center;
+  width: 32rem;
+}
+
+.orderConfirmation_container .orderConfirmation_products table th:first-child, .orderConfirmation_container .orderConfirmation_products table tr:first-child, .orderConfirmation_container .orderConfirmation_products table td:first-child {
+  text-align: left;
+}
+
+.orderConfirmation_container .orderConfirmation_products table th {
+  height: 30px;
+  border-bottom: 1px dotted black;
+}
+
+.orderConfirmation_container .orderConfirmation_products table tr {
+  margin: 2px auto;
+  border-bottom: 1px dotted black;
+}
+
+.orderConfirmation_container .orderConfirmation_products table td {
+  text-align: center;
+}
+/*# sourceMappingURL=OrderConfirmation.styles.css.map */
