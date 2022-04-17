@@ -31,101 +31,18 @@ export default function HorizontalNonLinearStepper({
   const [orderNumber, setOrderNumber] = React.useState("");
   const [orderCart, setOrderCart] = React.useState({});
 
-export default function HorizontalNonLinearStepper({ cart,setCart, checkoutStepListener,transactionCompleteListener, orderCart, setOrderCart}) {
+  useEffect(() => {
+    checkoutStepListener(activeStep);
 
-    const [activeStep, setActiveStep] = React.useState(0);
-    const [completed, setCompleted] = React.useState({});
-    const [creditCard, setCreditCard] = React.useState(0);
-    const [address, setAddress] = React.useState("");
-    const [postalCode, setPostalCode] = React.useState("");
-    const [creditCardExpiryDate, setCreditCardExpiryDate] = React.useState(0);
-    const [creditCardCode, setCreditCardCode] = React.useState(0);
-    const [coupon, setCoupon] = React.useState(0);
-    const [city, setCity] = React.useState("");
-    const [orderNumber, setOrderNumber] = React.useState("");
-    const [subTotal, setSubtotal] = React.useState(0);
-
-
+    if (allStepsCompleted()) {
+      setOrderCart({ ...cart });
 
       // clear cart
       setCart({ cartProducts: [], cartInfo: { totalItems: 0, totalPrice: 0 } });
 
-    useEffect(() => {
-
-        checkoutStepListener(activeStep)
-
-        if (allStepsCompleted()) {
-
-            setSubtotal(+cart.cartInfo.totalPrice);
-
-            const tax = (+cart.cartInfo.totalPrice * .13).toFixed(2);
-            const orderTotal = (+cart.cartInfo.totalPrice + +tax).toFixed(2);
-
-            setOrderCart({...cart, orderNumber })
-
-            transactionCompleteListener({...cart, orderDetails:{ orderId: orderNumber, tax, orderTotal}});
-
-            // clear cart
-            setCart({ cartProducts: [], cartInfo: { totalItems: 0, totalPrice: 0 } })
-
-            sessionStorage.removeItem("cart") 
-        }
-    },[activeStep])
-
- 
-    const totalSteps = () => {
-        return steps.length;
-    };
-
-    const completedSteps = () => {
-        return Object.keys(completed).length;
-    };
-
-    const isLastStep = () => {
-        return activeStep === totalSteps() - 1;
-    };
-
-    const allStepsCompleted = () => {
-        return completedSteps() === totalSteps();
-    };
-
-    const handleNext = () => {
-        const newActiveStep =
-            isLastStep() && !allStepsCompleted()
-                ?
-                steps.findIndex((step, i) => !(i in completed))
-                : activeStep + 1;
-        setActiveStep(newActiveStep);
-    };
-
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-
-    const handleStep = (step) => () => {
-        setActiveStep(step);
-    };
-
-    const handleComplete = () => {
-        const newCompleted = completed;
-        newCompleted[activeStep] = true;
-        setCompleted(newCompleted);
-        handleNext();
-
-        generateOrderNumber()
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
-        setCompleted({});
-    };
-
-
-  //   const handleInputChange = (e, setAction) => {
-
-  //       setAction(e.target.value)
-  //   }
-  // }, [activeStep]);
+      sessionStorage.removeItem("cart");
+    }
+  }, [activeStep]);
 
   // useEffect(() => {
 
