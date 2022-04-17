@@ -31,7 +31,7 @@ const CartSlider = ({ activeStatus, onMouseLeave }) => {
         }
 
 
-    }, [activeStatus])
+    }, [activeStatus, cart.cartProducts])
 
     const removeProductNative = (productId) => {
 

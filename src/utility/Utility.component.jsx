@@ -100,8 +100,6 @@ export const addToCart = (cart, product) => {
                 })
     
 
-                console.log("cart " , cart)
-
                 if (cart && cart.cartProducts && cart.cartProducts.length > 0) {
 
                     isProductInCart = cart.cartProducts.find(cartProduct => {

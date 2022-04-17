@@ -9,11 +9,10 @@ const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCod
     const total = useMemo(() => (+subtotal + +tax).toFixed(2), [tax, subtotal]);
 
 
-
     useEffect(() => {
         TagManager.dataLayer({
             dataLayer: {
-                event: "pageview",
+                event: "purchase",
                 page: {
                     path: "/order_confirmation",
                     pageType: "order_confirmation"
@@ -25,7 +24,8 @@ const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCod
                         subtotal,
                         total
                     },
-                    cart: cart
+                    products: cart.cartProducts,
+                    cartInfo: cart.cartInfo
                 }
             }
         })
@@ -37,6 +37,7 @@ const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCod
                 <div className="orderConfirmation_products">
                     <table>
                         <tbody>
+                            <tr>
                             <th>
                                 Name
                             </th>
@@ -46,9 +47,10 @@ const OrderConfirmation = ({ cart, orderId, address, city, creditCard, postalCod
                             <th>
                                 Price
                             </th>
+                            </tr>
                             {cart.cartProducts.map(product => {
                                 return (
-                                    <tr>
+                                    <tr key={product.id}>
                                         <td>
                                             {product.title}
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useCallback } from "react";
 import "./checkout_page.styles.scss";
 
 import { CartContext } from '../../Contexts/Cart';
@@ -26,7 +26,7 @@ const CheckoutPage = () => {
     }, [cart])
 
 
-    const checkoutStepListener = (activeStep) => {
+    const checkoutStepListener = useCallback((activeStep) => {
 
         const checkoutStepName = activeStep === 0 ? "billing" : activeStep === 1 ? "payment" : activeStep === 2 ? "order_review" : "";
 
@@ -34,14 +34,15 @@ const CheckoutPage = () => {
 
         TagManager.dataLayer({
             dataLayer: {
-                event: "pageview",
-                page: {
-                    path: "/checkout_" + checkoutStepName,
-                    pageType: "checkout"
+                event: "checkout",
+                checkout_info: {
+                    name: "checkout_" + checkoutStepName,
+                    step: activeStep + 1,
                 },
+                pageType: "checkout"
             }
         })
-    }
+    },[activeStep])
 
     return (
         <div className="page_section checkout_page_container">

@@ -16,7 +16,7 @@ const Product = ({ id, image, title, category, price, addToCart, quantity, ommit
 
         TagManager.dataLayer({
             dataLayer: {
-                event: "eeProductClick",
+                event: "productClick",
                 product: { id, image, title, category, price, rating, position }
             }
         })

@@ -16,9 +16,11 @@ import * as ReactAiIcons from 'react-icons/ai';
 import * as ReactGiIcons from 'react-icons/gi';
 import * as ReactBsIcons from 'react-icons/bs';
 
-import { BrowserView, MobileView } from 'react-device-detect'; // uninstall
+//import { BrowserView, MobileView } from 'react-device-detect'; // uninstall
 import { apiCallProducts, apiUserLogin } from '../../utility/Utility.component';
 import { useCheckMobileScreen } from '../../utility/Utility.component';
+
+import TagManager from 'react-gtm-module';
 
 const Navbar = (props) => {
 
@@ -79,6 +81,15 @@ const Navbar = (props) => {
 
         apiUserLogin((response) => {
 
+            TagManager.dataLayer({
+                dataLayer: {
+                    event: "login_success",
+                    email: 'test@gmail.com',
+                    userId: response
+                }
+            })
+
+
             setLogin(true)
 
         })
@@ -113,16 +124,16 @@ const Navbar = (props) => {
                         {!login ?
                             <>
                                 <br />
-                                <button className="login_btn">
+                                <li className="login_btn">
                                     <TransitionsModal login={userLogin} name="Login" />
 
-                                </button>
+                                </li>
                             </>
                             : <>
                                 <br />
-                                <button className="logout_btn" onClick={() => userLogout()} >
+                                <li className="logout_btn" onClick={userLogout} >
                                     Logout
-                                </button> </>}
+                                </li> </>}
                     </ul>
                 </div>
 
