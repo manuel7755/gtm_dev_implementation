@@ -121,11 +121,11 @@ export default function HorizontalNonLinearStepper({ cart,setCart, checkoutStepL
     };
 
 
-    const handleInputChange = (e, setAction) => {
+  //   const handleInputChange = (e, setAction) => {
 
-        setAction(e.target.value)
-    }
-  }, [activeStep]);
+  //       setAction(e.target.value)
+  //   }
+  // }, [activeStep]);
 
   // useEffect(() => {
 
