@@ -49,7 +49,8 @@ const Navbar = (props) => {
 
             const searchTerm = e.target.value;
 
-            apiCallProducts((products) => {
+
+            apiCallProducts(function(products) {
 
                 const sortedProducts = products.filter(product => {
 
@@ -58,13 +59,15 @@ const Navbar = (props) => {
                     if (productTitle.indexOf(searchTerm) > -1) {
 
                         return product
-                    }
+                    } 
+                    return false;
                 })
 
                 setSearchProducts(sortedProducts)
 
                 setLoadingSpinner(false)
 
+                return
             });
 
             props.history.push({

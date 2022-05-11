@@ -31,10 +31,18 @@ export default function HorizontalNonLinearStepper({
   const [orderNumber, setOrderNumber] = React.useState("");
   const [orderCart, setOrderCart] = React.useState({});
 
+
+  const allStepsCompleted = () => {
+    return completedSteps() === totalSteps();
+  };
+
+
   useEffect(() => {
     checkoutStepListener(activeStep);
 
-    if (allStepsCompleted()) {
+    let checkoutStepsComplete = allStepsCompleted();
+
+    if (checkoutStepsComplete) {
       setOrderCart({ ...cart });
 
       // clear cart
@@ -62,10 +70,7 @@ export default function HorizontalNonLinearStepper({
     return activeStep === totalSteps() - 1;
   };
 
-  const allStepsCompleted = () => {
-    return completedSteps() === totalSteps();
-  };
-
+  
   const handleNext = () => {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
@@ -133,7 +138,7 @@ export default function HorizontalNonLinearStepper({
                   postalCode={postalCode}
                   city={city}
                 />
-                {/* <Button onClick={handleReset}>Reset</Button> */}
+                <Button onClick={handleReset}>Reset</Button>
               </Box>
             </React.Fragment>
           ) : (

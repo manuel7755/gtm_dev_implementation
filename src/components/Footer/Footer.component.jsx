@@ -17,19 +17,19 @@ const Footer = () => {
                     <a href="https://www.instagram.com/" target="_blank"  rel="noreferrer">Instagram</a>
                 </li>
                 <li>
-                    <a href="#">Newsfeed</a>
+                    <a href="https://www.google.com/"  target="_blank" rel="noreferrer">Newsfeed</a>
                 </li>
                 <li>
-                    <a href="#">Upcoming Products</a>
+                    <a href="https://www.google.com/"  target="_blank" rel="noreferrer">Upcoming Products</a>
                 </li>
                 <li>
-                    <a href="#">Affiliates</a>
+                    <a href="https://www.google.com/"  target="_blank" rel="noreferrer">Affiliates</a>
                 </li>
                 <li>
-                    <a href="#">Careers</a>
+                    <a href="https://www.google.com/"  target="_blank" rel="noreferrer">Careers</a>
                 </li>
                 <li>
-                    <a href="#">Refund</a>
+                    <a href="https://www.google.com/"  target="_blank" rel="noreferrer">Refund</a>
                 </li>
             </ul>
         </div>
