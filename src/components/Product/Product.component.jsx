@@ -27,7 +27,7 @@ const Product = ({ id, image, title, category, price, addToCart, quantity, ommit
             <div className="product_content">
                 <div className="product_image">
                     <Link to={`/product?pCode=${id}`}>
-                        <img src={image} alt="product image" />
+                        <img src={image} alt="product" />
                     </Link>
                 </div>
                 <h2 className="product_title">{title}</h2>

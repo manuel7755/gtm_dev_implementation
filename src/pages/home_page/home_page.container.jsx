@@ -4,7 +4,7 @@ import './home_page.styles.scss';
 import HeroBanner from '../../assets/images/tamanna-rumee-mIqyYpSNq3o-unsplash_main_banner.jpg'
 import PromoShoes from '../../assets/images/promotion_athletic_shoes.jpg'
 import PromoBackpacks from '../../assets/images/promotion_backpacks.jpg'
-import PromoVaccums from '../../assets/images/promotion_vaccums.jpg'
+import PromoVacuums from '../../assets/images/promotion_vaccums.jpg'
 import PromoPans from '../../assets/images/promotion_pans.jpg'
 import PromoWatches from '../../assets/images/promotion_watches.jpg'
 import PromoCouches from '../../assets/images/promotion_couches.jpg'
@@ -85,7 +85,7 @@ const Homepage = () => {
                 <section className="section_about_product">
                     <div className="product_description_container">
                         <div className="product_description_image_container">
-                            <img src={PromoVaccums} />
+                            <img src={PromoVacuums} alt="promo vacuums" />
                         </div>
                         <div promo="2 x 1 blk friday vaccums" creative="red vaccum" className="product_description">
                             <h2 className="heading-secondary">2 x 1 Robot Vaccums!</h2>
@@ -102,7 +102,7 @@ const Homepage = () => {
                             </p>
                         </div>
                         <div className="product_description_image_container">
-                            <img src={PromoPans} alt="mini mendiants" />
+                            <img src={PromoPans} alt="promo pans" />
                         </div>
                     </div>
                 </section>

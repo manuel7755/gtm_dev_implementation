@@ -4,7 +4,7 @@ import Rating from '@mui/material/Rating';
 
 
 export default function BasicRating({ rate }) {
-  const [value, setValue] = React.useState(2);
+  // const [value, setValue] = React.useState(2);
 
   return (
     <Box

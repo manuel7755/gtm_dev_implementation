@@ -16,7 +16,7 @@ const ListingPage = () => {
 
     const { listingProducts, setListingProducts } = useContext(ListingProductsContext);
     const { cart, setCart } = useContext(CartContext);
-    const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
+    const { LoadingSpinner } = useContext(LoadingSpinnerContext);
 
     useEffect(() => {
 
@@ -44,7 +44,7 @@ const ListingPage = () => {
 
             });
         }
-    }, []);
+    });
 
     function nativeAddToCart(productId) {
 
@@ -56,6 +56,7 @@ const ListingPage = () => {
                     product.quantity = 1;
                     return product
                 }
+                return false;
             });
 
             addToCart(cart, addedToCartProduct).then((updatedCart) => {

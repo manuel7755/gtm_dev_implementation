@@ -19,14 +19,15 @@ const SearchPage = function (props) {
 
     const { searchProducts, setSearchProducts } = useContext(SearchProductsContext)
     const { cart, setCart } = useContext(CartContext);
-    const { LoadingSpinner, setLoadingSpinner } = useContext(LoadingSpinnerContext);
+    const { LoadingSpinner } = useContext(LoadingSpinnerContext);
 
     useEffect(() => {
 
         const { history } = props;
-        const searchTerm = history.location.state.searchKeyword;
+        const searchTerm = typeof history.location.state.searchKeyword != 'undefined' ? history.location.state.searchKeyword : false;
 
-        
+    if (searchTerm) {
+
         TagManager.dataLayer({
             dataLayer: {
                 event: "pageview",
@@ -36,10 +37,10 @@ const SearchPage = function (props) {
                 },  
                 products: [...searchProducts]
             }
-        })
-
+        })    
         setSearchProducts(searchProducts)
-    }, [searchProducts]);
+     }
+    });
 
 
     function nativeAddToCart(productId) {
@@ -52,6 +53,7 @@ const SearchPage = function (props) {
                     product.quantity = 1;
                     return product
                 }
+                return false;
             });
 
 
